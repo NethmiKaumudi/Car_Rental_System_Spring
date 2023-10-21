@@ -12,32 +12,39 @@
 <section class="home" id="home">
     <header class="header">
         <h2 class="logo"><span style="color: dodgerblue">Easy</span>.Com</h2>
-        <!--        <nav class="navigation">-->
-        <!--            <a href="#">Home</a>-->
-        <!--            <a href="#">AboutUs</a>-->
-        <!--            <a href="#">Cars</a>-->
-        <!--            <a href="#">Contact</a>-->
-        <!--            <div class="dropdown">-->
-        <!--                <button class="btnLogin-popUp">Login</button>-->
-        <!--                <div class="dropdown-content">-->
-        <!--                    <a href="#">Admin</a>-->
-        <!--                    <a href="#">Register Customer</a>-->
-        <!--                    <a href="#">Online Customer</a>-->
-        <!--                    <a href="#">Driver</a>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </nav>-->
-        <nav>
-            <ul>
-                <li href="#">Home</li>
-                <li href="#">AboutUs</li>
-                <li href="#">Cars</li>
-                <li href="#">ContactUs</li>
-            </ul>
+        <nav class="navigation">
+            <a href="#">Home</a>
+            <a href="#">AboutUs</a>
+            <a href="#">Cars</a>
+            <a href="#">ContactUs</a>
             <button class="btnLogin-popUp">Login</button>
         </nav>
     </header>
-
+   <div class="wrapper">
+    <div class="form-box login">
+        <h2>Login</h2>
+        <form action="#">
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                <input type="text" required>
+                <label>UserName</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                <input type="password" required>
+                <label>PassWord</label>
+            </div>
+            <div class="remember-forget">
+                <label><input type="checkbox">RememberMe</label>
+                <a href="#">Forget PassWord</a>
+            </div>
+            <button type="submit" class="btnLogin">Login</button>
+            <div class="signup">
+                <p>Don't have an account?<a href="#" class="signUp-link">Sign Up</a></p>
+            </div>
+        </form>
+    </div>
+    </div>
 </section>
 <section></section>
 <section></section>
