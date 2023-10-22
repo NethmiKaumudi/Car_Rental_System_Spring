@@ -13,6 +13,8 @@
     background-repeat: no-repeat;
     color: white;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -21,8 +23,9 @@
     top: 0;
     left: 0;
     width: 100%;
+    height: auto;
     padding: 10px 100px;
-    /*background-color: transparent;*/
+    background-color: black;
     color: black;
     display: flex;
     justify-content: space-between;
@@ -108,11 +111,11 @@
 
 /*}*/
 .wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 500px;
-    height: 540px;
+    position: relative;
+    /*top: 50%;*/
+    /*left: 50%;*/
+    width: 400px;
+    height: 440px;
     background: transparent;
     border: 2px solid white;
     border-radius: 20px;
@@ -122,6 +125,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .5s ease, height .2s ease;
+}
+
+.wrapper.active-popup {
+    transform: scale(1);
+
+}
+
+.wrapper.active {
+    height: 560px;
 }
 
 .wrapper.form-box {
@@ -132,7 +147,54 @@
 
 }
 
-.form-box h2 {
+.wrapper .form-box-login {
+    /*display: none;*/
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box-login {
+    /*display: none;*/
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.wrapper .form-box-signUp {
+    position: absolute;
+    transition: none;
+
+    transform: translateX(400px);
+}
+
+.wrapper.active .form-box-signUp {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper > .icon-closer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: dodgerblue;
+    color: white;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.form-box-signUp h2 {
+    font-size: 2em;
+    color: white;
+    text-align: center;
+}
+
+.form-box-login h2 {
     font-size: 2em;
     color: white;
     text-align: center;
@@ -208,10 +270,10 @@
 
 .remember-forget a:hover {
     text-decoration: underline;
-    color: white;
+    /*color: white;*/
 }
 
-.btnLogin {
+.btn {
     width: 100%;
     height: 45px;
     background: white;
@@ -222,4 +284,193 @@
     font-size: 1em;
     color: #007bff;
     font-weight: 500;
+}
+
+.signup {
+    font-size: .9em;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.signUp > p > a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.signUp > p > a :hover {
+    text-decoration: underline;
+
+}
+
+/*About Us*/
+.aboutUs {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: grid;
+    align-items: center;
+    /*background: black;*/
+    background: linear-gradient(to top, white, black);
+    color: white;
+}
+
+.heading {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.heading span {
+    font-weight: 500;
+    text-transform: uppercase;
+
+}
+
+.heading h1 {
+    font-size: 2rem;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+}
+
+.about-img {
+    width: 100%;
+}
+
+.about-text > span {
+    font-weight: 500;
+    color: #007bff;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.about-text > p {
+    margin: .5rem 0 1.4rem;
+    color: black;
+}
+
+.about-text > .button {
+    padding: 10px 20px;
+    background: white;
+    color: #007bff;
+    border: 2px solid white;
+    border-radius: .5rem;
+    text-decoration: none;
+}
+
+.about-text > .button:hover {
+    background: black;
+    color: white;
+}
+
+
+/*Cars*/
+.cars {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: grid;
+    align-items: center;
+    /*background: black;*/
+    background: linear-gradient(to top, white, black);
+    color: white;
+}
+
+.cars .heading p {
+    font-size: 0.938rem;
+    font-weight: 500;
+}
+
+.cars-container {
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 2rem;
+    margin-top: 2rem;
+
+}
+
+.cars-container .box {
+    flex: 1 1 17rem;
+    position: relative;
+    height: 200px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    color: black;
+    background: black;
+}
+
+.cars-container .box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.cars-container .box img:hover {
+    transform: scale(1.1);
+    transition: .5s;
+}
+
+.cars-container .box h2 {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-weight: 400;
+    font-size: 1rem;
+    background: white;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.cars-container .box h2:hover {
+    /*display: block;*/
+    background: #007bff;
+    color: white;
+}
+
+.topic {
+    text-align: center;
+}
+
+.contact-details {
+    width: 100%;
+    min-height: 15vh;
+    position: relative;
+    display: grid;
+    align-items: center;
+    background: black;
+    /*background: linear-gradient(to top, white, black);*/
+    color: white;
+}
+.contact-details address:nth-child(1){
+   position: absolute;
+    left: 32%;
+
+}
+.contact-details address:nth-child(2){
+    position: absolute;
+    right: 26%;
+
+}
+.contact-details h4{
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+}
+.contact-details address a {
+    font-size: 1.5em;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
 }
