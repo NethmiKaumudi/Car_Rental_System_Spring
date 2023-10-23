@@ -3,8 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>RegisterCustomerDashBoard</title>
+    <meta name="viewport" content="width=device-width initial-scale=1 minimum-scale=1 maximum-scale=2">
+    <link rel="stylesheet" href="../styles/RegisteredCustomersDashboard.css">
+    <script src="../assests/lib/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../assests/lib/css/normalize.css">
+    <link rel="stylesheet" href="../assests/lib/css/bootstrap.min.css">
 </head>
 <body>
+<div class="sidebar">
+    <div class="logo">
+        <ul class="menu">
+            <li  class="active">
+                <a href="#cars">
+                    <i>
+                        <ion-icon name="car-outline"></ion-icon>
+                    </i>
+                    <span>Cars</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="bookmarks-outline"></ion-icon>
+                    </i>
+                    <span>Booking</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="card-outline"></ion-icon>
+                    </i>
+                    <span>Payment</span></a>
+            </li>
+            <li class="logout">
+                <a href="#">
+                    <i>
+                        <ion-icon name="log-out-outline"></ion-icon>                    </i>
+                    <span>LogOut</span></a>
+            </li>
 
+        </ul>
+    </div>
+</div>
+<section class="cars" id="cars"></section>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

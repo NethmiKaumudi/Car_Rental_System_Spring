@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Home Page</title>
     <!--    <meta http-equiv="refresh" content="10">-->
+    <meta name="viewport" content="width=device-width initial-scale=1 minimum-scale=1 maximum-scale=2">
 
     <link rel="stylesheet" href="assests/lib/css/normalize.css">
     <link rel="stylesheet" href="assests/lib/css/bootstrap.min.css">
@@ -42,7 +43,7 @@
                     <label><input type="checkbox">RememberMe</label>
                     <a href="#">Forget PassWord</a>
                 </div>
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn" id="LoginBtn">Login</button>
                 <div class="signup">
                     <p>Don't have an account? <a href="#" class="signUp-link"> Sign Up</a></p>
                 </div>
@@ -53,23 +54,23 @@
             <form action="#">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
-                    <input type="text" required>
+                    <input type="text" id="txtUserId" required>
                     <label>UserId</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
-                    <input type="text" required>
+                    <input type="text" id="txtUserName" required>
                     <label>UserName</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" required>
+                    <input type="password" id="txtPassWord" required>
                     <label>PassWord</label>
                 </div>
 
                 <div class="input-box">
                     <span class="icon"><ion-icon name="people-circle-outline"></ion-icon></span>
-                    <input type="text" required>
+                    <input type="text" id="txtUserRole" required>
                     <label>User Role</label>
                 </div>
 
@@ -78,7 +79,7 @@
                     <label><input type="checkbox">I agree to term & conditions</label>
 
                 </div>
-                <button type="submit" class="btn">Sign Up</button>
+                <button type="submit" class="btn" id="SigUpBtn">Sign Up</button>
                 <div class="signup">
                     <p>Already Have an Account ? <a href="#" class="login-link"> Login</a></p>
                 </div>
@@ -183,7 +184,7 @@
 <script src="assests/lib/js/jquery-3.7.0.min.js"></script>
 <script src="assests/lib/js/bootstrap.min.js"></script>
 
-<script src="js/index.js"></script>
+<script src="controller/index.js"></script>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
