@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: linear-gradient(135deg, dodgerblue, white);
+}
+
+.register-form-container {
+    max-width: 700px;
+    width: 100%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+}
+
+.register-form-container .title-customerRegister {
+    font-size: 30px;
+    font-weight: 500;
+    position: relative;
+}
+
+.register-form-container .title-customerRegister::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(135deg, dodgerblue, black);
+}
+
+.register-form-container form .userDetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+
+}
+
+form .userDetails .input-box {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 10px);
+}
+
+.userDetails .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.userDetails .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid #1b1e21;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.userDetails .input-box input:focus,
+.userDetails .input-box input:valid {
+    border-color: black;
+}
+
+.userDetails .input-box input:hover {
+    border-color: #1E90FF;
+
+}
+
+#showImg {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    margin-left: 10%;
+    border: 1px solid black;
+    /*background-position: center;*/
+    background-size: cover;
+    margin-bottom: 5px;
+}
+
+form .button {
+    height: 45px;
+    margin: 45px 0;
+    width: 40%;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+
+form .button input {
+    width: 100%;
+    height: 45px;
+    background: #1E90FF;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    margin-left: 176px;
+    /*transition: all .2s ease;*/
+}
+
+form .button input:hover {
+    background: linear-gradient(135deg, dodgerblue, black);
+    color: white;
+    transform: scale(1);
+
+}
+
+@media screen and (max-width: 584px) {
+    .register-form-container {
+        max-width: 100%;
+
+    }
+
+    .userDetails .input-box input {
+        height: 45px;
+        width: 100%;
+    }
+    form .userDetails .input-box {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .register-form-container form .userDetails {
+        max-height: 300px;
+        overflow-y: scroll;
+
+    }
+
+    .userDetails::-webkit-scrollbar {
+        width: 0;
+    }
+    form .button input {
+        width: 100%;
+        height: 45px;
+        background: #1E90FF;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1em;
+        color: white;
+        font-weight: 500;
+        margin-left: 100px;
+        /*transition: all .2s ease;*/
+    }
+
+}

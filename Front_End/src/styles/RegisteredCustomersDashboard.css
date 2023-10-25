@@ -5,6 +5,8 @@
     border: none;
     outline: none;
     font-family: "Poppins", sans-serif;
+    Content-Security-Policy: script-src 'self' 'unsafe-inline';
+
 }
 
 body {
@@ -17,7 +19,7 @@ body {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 110px;
+    width: 7vw;
     height: 100vh;
     padding: 0 1.7rem;
     color: black;
@@ -53,6 +55,7 @@ body {
 
 .menu li:hover, .active {
     background: lightslategray;
+
 }
 
 .menu li a {
@@ -64,8 +67,11 @@ body {
     gap: 2rem
 }
 
+.menu li a:hover {
+    color: black;
+}
 
-.menu li  a span {
+.menu li a span {
     overflow: hidden;
 }
 
@@ -78,4 +84,129 @@ body {
     top: 460px;
     left: 0px;
     width: 100%;
+}
+
+/*cars*/
+.car {
+    position: relative;
+    width: 93%;
+    display: grid;
+}
+
+.container {
+    max-width: 96vw;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.container .title {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container .carsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+}
+
+.container .carsContainer .vehicles {
+    text-align: center;
+    padding: 3rem 2rem;
+    /*background: linear-gradient(to left,#007bff,white);*/
+    background: white;
+    box-shadow: 0 .5rem 1rem lightslategray;
+    outline: .1rem solid black;
+    outline-offset: -1rem;
+    cursor: pointer;
+}
+
+.container .carsContainer .vehicles:hover {
+    outline: .1rem solid #1E90FF;
+    outline-offset: 0;
+    transform: scale(0.9);
+}
+
+.container .carsContainer .vehicles h3 {
+    padding: 0.2rem 0;
+    font-size: 21px;
+    color: #1E90FF;
+}
+
+.container .carsContainer .vehicles h3:hover {
+    font-size: 23px;
+    color: black;
+}
+
+.container .carsContainer .vehicles h4 {
+    padding: 0.2rem 0;
+    font-size: 20px;
+    color: black;
+}
+
+.moreBtn {
+    padding: 8px 25px;
+    align-items: center;
+    text-align: center;
+    background: white;
+    color: #1E90FF;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+/*.booking{*/
+/*    position: relative;*/
+/*    width: 93%;*/
+/*}*/
+.MoreDetails {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    width: 100%;
+    background: transparent;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.MoreDetails .details {
+    display: none;
+    padding: 2rem;
+    text-align: center;
+    background: white;
+    position: relative;
+    margin: 2rem;
+    width: 21rem;
+}
+
+.MoreDetails .details.active {
+    display: inline-block;
+}
+.MoreDetails .details img{
+    height: 5rem;
+
+}
+.MoreDetails .details i{
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    cursor: pointer;
+    color: black;
+    font-size: 2rem;
+
+}
+.MoreDetails .details i:hover{
+    /*transform: rotateX(90deg);*/
+    transform: scale(1.2);
+
+}
+.MoreDetails .details h3{
+    color: black;
+    padding: .5rem;
+    font-size: 1.2rem;
+    text-align: left;
 }

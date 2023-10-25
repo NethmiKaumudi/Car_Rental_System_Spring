@@ -31,6 +31,7 @@
     justify-content: space-between;
     align-items: center;
     z-index: 99;
+    /*margin-bottom: 10px;*/
 }
 
 .logo {
@@ -136,7 +137,7 @@
 }
 
 .wrapper.active {
-    height: 560px;
+    height: 580px;
 }
 
 .wrapper.form-box {
@@ -162,8 +163,8 @@
 .wrapper .form-box-signUp {
     position: absolute;
     transition: none;
-
     transform: translateX(400px);
+    margin: 5px;
 }
 
 .wrapper.active .form-box-signUp {
@@ -189,6 +190,7 @@
 }
 
 .form-box-signUp h2 {
+    margin-top: 10px;
     font-size: 2em;
     color: white;
     text-align: center;
@@ -203,7 +205,7 @@
 .input-box {
     position: relative;
     width: 100%;
-    height: 50px;
+    height: 40px;
     border-bottom: 2px solid white;
     margin: 30px 0;
 
@@ -453,21 +455,25 @@
     /*background: linear-gradient(to top, white, black);*/
     color: white;
 }
-.contact-details address:nth-child(1){
-   position: absolute;
+
+.contact-details address:nth-child(1) {
+    position: absolute;
     left: 32%;
 
 }
-.contact-details address:nth-child(2){
+
+.contact-details address:nth-child(2) {
     position: absolute;
     right: 26%;
 
 }
-.contact-details h4{
+
+.contact-details h4 {
     position: absolute;
     right: 50%;
     bottom: 0;
 }
+
 .contact-details address a {
     font-size: 1.5em;
     color: white;
