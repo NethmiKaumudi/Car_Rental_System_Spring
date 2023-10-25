@@ -11,6 +11,8 @@ function signUp() {
         username: document.getElementById('txtUserName').value,
         password: document.getElementById('txtPassWord').value,
         userRole: document.getElementById('txtUserRole').value,
+        userEmail: document.getElementById('txtUserEmail').value,
+
     };
 
     // Send the data to the server using AJAX

@@ -8,6 +8,7 @@
     <script src="../assests/lib/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../assests/lib/css/normalize.css">
     <link rel="stylesheet" href="../assests/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/AdminCustomerPage.css">
 </head>
 <body>
 <div class="sidebar">
@@ -23,7 +24,8 @@
             <li class="active">
                 <a href="#">
                     <i>
-                        <ion-icon name="man-outline"></ion-icon>
+                        <ion-icon name="checkmark-done-outline"></ion-icon>
+                        <!--                        <ion-icon name="man-outline"></ion-icon>-->
                     </i>
                     <span>Customer</span></a>
             </li>
@@ -73,6 +75,33 @@
 
         </ul>
     </div>
+</div>
+<div class="table-container">
+    <section class="table">
+        <section class="table-header">
+            <h1>Customer Approved Table</h1>
+        </section>
+        <section class="table-body">
+            <table id="customer-table">
+                <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>NIC</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                    <th>Licence No</th>
+                    <th>Email</th>
+                    <th>Image</th>
+                    <th>Approve</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Customer data will be displayed here -->
+                </tbody>
+            </table>
+        </section>
+    </section>
 </div>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

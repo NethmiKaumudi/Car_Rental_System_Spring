@@ -19,6 +19,8 @@ body {
     background: white;
     padding: 25px 30px;
     border-radius: 10px;
+    box-shadow: 0 .4rem .8rem slategray;
+    border: 1px solid black;
 }
 
 .register-form-container .title-customerRegister {
@@ -130,10 +132,12 @@ form .button input:hover {
         height: 45px;
         width: 100%;
     }
+
     form .userDetails .input-box {
         margin-bottom: 15px;
         width: 100%;
     }
+
     .register-form-container form .userDetails {
         max-height: 300px;
         overflow-y: scroll;
@@ -143,6 +147,7 @@ form .button input:hover {
     .userDetails::-webkit-scrollbar {
         width: 0;
     }
+
     form .button input {
         width: 100%;
         height: 45px;

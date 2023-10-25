@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -22,6 +23,8 @@ public class Customer {
     private String customerContact;
     private String customerLicenceNo;
     private String customerEmail;
+    private MultipartFile file;
+
 
 
 }

@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+
+td img {
+    vertical-align: middle;
+}
+
+.table-container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background: linear-gradient(45deg, white, #007bff);;*/
+    background: url("../assests/img/standard-quality-control-collage.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.table-container .table {
+    width: 80vw;
+    height: 90vh;
+    background-color: transparent;
+    /*color: white;*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 .4rem .8rem slategray;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.table-header {
+    width: 100%;
+    height: 10%;
+    background-color: transparent;
+    padding: 1rem 2rem;
+    color: white;
+}
+
+.table-body {
+    width: 95%;
+    max-height: calc(89% - .8rem);
+    background-color: white;
+    margin: .8rem auto;
+    border-radius: 0.8rem;
+    overflow: auto;
+}
+
+#customer-table {
+    width: 100%;
+
+}
+
+table th td {
+    border-collapse: collapse;
+    padding: 1rem;
+
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #1E90FF;
+    margin: 0;
+    padding: 0;
+
+}
+
+.table-body ::-webkit-scrollbar {
+    width: 0;
+}
+
+/*.table-body ::-webkit-scrollbar-thumb {*/
+/*    border-radius: .5rem;*/
+/*    background-color: grey;*/
+/*    visibility: hidden;*/
+/*}*/
+
+/*.table-body:hover ::-webkit-scrollbar-thumb {*/
+/*    visibility: visible;*/
+/*}*/
+
+tbody tr:nth-child(even) {
+    background-color: lightslategray;
+}
+
+tbody tr:hover {
+    background-color: white;
+}
+
+.approve-button {
+    background-color: limegreen;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+}
+
+.approve-button:hover {
+    background-color: darkgreen;
+
+}
