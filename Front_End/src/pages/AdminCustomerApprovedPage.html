@@ -113,40 +113,9 @@
 </div>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="../assests/lib/js/jquery-3.7.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="../models/GuestCustomerRegister.js"></script>
+<script src="../controller/CustomerApprovetSetData.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $('#register-form').submit(function (event) {
-            event.preventDefault();
-
-            // Capture form data
-            var customerId = $('#customerIdInput').val();
-            var nic = $('#nicInput').val();
-            var name = $('#nameInput').val();
-            var address = $('#addressInput').val();
-            var contact = $('#contactInput').val();
-            var licenceNo = $('#licenceNoInput').val();
-            var email = $('#emailInput').val();
-
-            // Create a customer object
-            var customer = {
-                customerId: customerId,
-                nic: nic,
-                name: name,
-                address: address,
-                contact: contact,
-                licenceNo: licenceNo,
-                email: email
-            };
-
-            // Store the customer data in localStorage
-            localStorage.setItem('newCustomer', JSON.stringify(customer));
-
-            // Redirect to the admin page
-            window.location.href = 'AdminCustomerApprovedPage.html';
-        });
-    });
-</script>
 </body>
 </html>
