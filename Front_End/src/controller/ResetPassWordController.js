@@ -5,12 +5,12 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: 'user-password-reset/forgot-password',
-            data: JSON.stringify({ email: email }),
+            data: JSON.stringify({email: email}),
             contentType: 'application/json',
             success: function (data) {
                 if (data === 'success') {
                     // Redirect to Reset Password page after sending the reset link
-                    window.location.href = 'ResetPassWordPage.html';
+                    window.location.href = '../pages/ResetPassWordPage.html';
                 } else {
                     alert('Password reset request failed.');
                 }
@@ -28,12 +28,12 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: 'user-password-reset/reset-password',
-            data: JSON.stringify({ email: email, token: token, newPassword: newPassword }),
+            data: JSON.stringify({email: email, token: token, newPassword: newPassword}),
             contentType: 'application/json',
             success: function (data) {
                 if (data === 'success') {
                     // Redirect to a success page or login page
-                    window.location.href = 'index.html'; // Replace with your login page
+                    window.location.href = '../index.html'; // Replace with your login page
                 } else {
                     alert('Password reset failed. Please check the token and try again.');
                 }
