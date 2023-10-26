@@ -18,5 +18,5 @@ public class CustomerDTO {
     private String customerContact;
     private String customerLicenceNo;
     private String customerEmail;
-    private MultipartFile file;
+    private String imagePath;
 }
