@@ -15,7 +15,7 @@ public class TokenCleanupServiceImpl {
     @Autowired
     private PassWordResetRepo passwordResetTokenRepository;
 
-    @Scheduled(fixedRate = 3600000) // Run this task every hour (adjust the rate as needed)
+    @Scheduled(fixedRate = 3600000)
     public void deleteExpiredTokens() {
         Date currentDate = new Date();
         passwordResetTokenRepository.deleteByExpiryDateBefore(currentDate);

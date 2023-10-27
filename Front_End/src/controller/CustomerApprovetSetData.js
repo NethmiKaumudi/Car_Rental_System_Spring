@@ -1,3 +1,5 @@
+const BASE_URL = "http://localhost:8080/Back_End/";
+
 $(document).ready(function () {
     // Retrieve the customer data from localStorage
     var newCustomer = JSON.parse(localStorage.getItem('newCustomer'));
@@ -33,7 +35,7 @@ $(document).ready(function () {
         // Send an AJAX request to your Spring backend to approve and insert the data
         $.ajax({
             type: 'POST',
-            url: 'customer', // Your Spring backend endpoint for approval
+            url: BASE_URL+'customer',
             data: {customerId: customerId},
             success: function (data) {
                 // Data successfully approved and inserted into the database

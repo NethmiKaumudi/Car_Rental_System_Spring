@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@ToString
+//@ToString
 public class User {
     @Id
     @Column(name = "user_id", columnDefinition = "VARCHAR(64)")

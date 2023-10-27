@@ -1,14 +1,13 @@
 package lk.ijse.car_rental_system.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+//@Data
 @ToString
+@Getter
+@Setter
 public class UserDTO {
     private String userId;
     private String userName;

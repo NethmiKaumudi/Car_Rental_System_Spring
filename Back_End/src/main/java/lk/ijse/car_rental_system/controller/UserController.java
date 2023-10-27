@@ -14,7 +14,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/signUp")
-    public ResponseUtil addUser(UserDTO dto){
+    public ResponseUtil addUser(@RequestBody UserDTO dto){
         userService.addUser(dto);
         return new ResponseUtil("Ok","Successfully Added",dto);
     }

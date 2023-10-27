@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>AdminDriverPage</title>
+    <meta name="viewport" content="width=device-width initial-scale=1 minimum-scale=1 maximum-scale=2">
+    <link rel="stylesheet" href="../styles/RegisteredCustomersDashboard.css">
+    <script src="../assests/lib/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../assests/lib/css/normalize.css">
+    <link rel="stylesheet" href="../assests/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assests/lib/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../styles/AdminDriverPageStyles.css">
+
 </head>
 <body>
 
 <div class="sidebar">
     <div class="logo">
         <ul class="menu">
-            <li c>
+            <li>
                 <a href="#">
                     <i>
                         <ion-icon name="stats-chart-outline"></ion-icon>
                     </i>
                     <span>DashBoard</span></a>
             </li>
-            <li class="active">
+            <li>
                 <a href="#">
                     <i>
                         <ion-icon name="checkmark-done-outline"></ion-icon>
@@ -38,7 +46,7 @@
                     </i>
                     <span>Booking</span></a>
             </li>
-            <li>
+            <li class="active">
                 <a href="#">
                     <i>
                         <ion-icon name="card-outline"></ion-icon>
@@ -79,5 +87,109 @@
         </ul>
     </div>
 </div>
+<div class="driver_sec">
+    <div class="register-form-container">
+        <h1 class="title-driverForm">Driver Form</h1>
+        <form id="driver-form" action="#">
+            <div class="userDetails">
+                <div class="input-box">
+                    <span class="details">Driver Id </span>
+                    <Input type="text" id="txtDriverId" placeholder="Enter Id Like 'D001'">
+                </div>
+                <div class="input-box">
+                    <span class="details">Driver Nic </span>
+                    <Input type="text" id="txtDriverNic" placeholder="Enter Your Nic">
+                </div>
+                <div class="input-box">
+                    <span class="details">Driver Name </span>
+                    <Input type="text" id="txtDriverName" placeholder="Enter Your Full Name ">
+                </div>
+                <div class="input-box">
+                    <span class="details">Driver Address </span>
+                    <Input type="text" id="txtDriverAddress" placeholder="Enter Your Address ">
+                </div>
+                <div class="input-box">
+                    <span class="details">Driver Contact </span>
+                    <Input type="text" id="txtDriverContact" placeholder="Enter Your Contact number ">
+                </div>
+                <div class="input-box">
+                    <span class="details">Driver Driving Licence No </span>
+                    <Input type="text" id="txtDriverLicenceNo" placeholder="Enter Your Driving Licence No">
+                </div>
+                <!--            <div class=" input-box">-->
+                <!--                <span class="details">Customer Email</span>-->
+                <!--                <Input type="email" id="emailInput" placeholder="Enter Your Email Address">-->
+                <!--            </div>-->
+
+                <!--            <div class=" input-box">-->
+                <!--                <span class="details">Upload Nic Image Or Licence Image</span>-->
+                <!--                <div id="showImg"></div>-->
+                <!--                <input type="file" id="inputField">-->
+                <!--            </div>-->
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="btn-panel">
+        <div class="btn">
+            <input type="submit" value="Update">
+        </div>
+        <div class="btn">
+            <input type="submit" value="Delete">
+        </div>
+        <div class="btn">
+            <input type="submit" value="ClearAll">
+        </div>
+        <div class="btn">
+            <input type="submit" value="GetAll">
+        </div>
+    </div>
+
+    <div style="margin-bottom: 130px;position: absolute;top: 4%;left: 50%;background-color: white">
+        <h3 style="margin: 20px;">Search Item Here</h3>
+        <form class="d-flex" role="search" style="margin: 20px">
+            <input class="form-control me-2" type="search" id="searchItemField"
+                   placeholder="Input ItemCode"
+                   aria-label="Search" style="width:500px; background-color:#63C228">
+            <button class="btn btn-outline-success" id="itemSearchbtn" type="submit"
+                    style="width:100px; margin-right: 10px">Search
+            </button>
+            <button class="btn btn-outline-danger" id="itemSearchClearBtn" type="submit"
+                    style="width:100px;">clear
+            </button>
+
+        </form>
+    </div>
+    <div class="table-container"style="margin-bottom: 130px;position: absolute;top: 30%;left: 50%;background-color: white">
+        <section class="table">
+            <section class="table-header">
+                <h1>Customer Table</h1>
+            </section>
+            <section class="table-body">
+                <table id="customer-table">
+                    <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>NIC</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Contact</th>
+                        <th>Licence No</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Customer data will be displayed here -->
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </div>
+</div>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </body>
 </html>
