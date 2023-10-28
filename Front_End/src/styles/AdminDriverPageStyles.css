@@ -87,6 +87,8 @@
 .register-form-container {
     max-width: 400px;
     width: 100%;
+    height: 97vh;
+
     background: white;
     padding: 25px 30px;
     border-radius: 10px;
@@ -184,11 +186,11 @@ form .button input:hover {
 
 .btn-panel {
     position: absolute;
-    left: 70%;
-    top: 40%;
+    left: 43%;
+    top: 10%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    width: 200px;
+    width: 700px;
 }
 
 .btn-panel .btn {
@@ -211,19 +213,185 @@ form .button input:hover {
     transition: .5s;
 }
 
-.btn-panel div:nth-child(1) input{
+.btn-panel div:nth-child(1) input {
     background-color: #1c7430;
 }
-.btn-panel div:nth-child(2) input{
+
+.btn-panel div:nth-child(2) input {
     background-color: red;
 }
-.btn-panel div:nth-child(3) input{
-    background-color:#171a1d ;
+
+.btn-panel div:nth-child(3) input {
+    background-color: #171a1d;
     color: white;
 }
-.btn-panel div:nth-child(4) input{
+
+.btn-panel div:nth-child(4) input {
     background-color: blue;
 }
-.btn-panel .btn input :hover{
+
+.btn-panel .btn input :hover {
     transform: scale(1);
+}
+
+.searchDriver {
+    position: absolute;
+    left: 43.5%;
+    top: 22%;
+    /*border: 2px solid black;*/
+    width: 700px;
+    height: 150px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 .4rem .8rem slategray;
+
+}
+
+.searchDriverTitle {
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-bottom: 20px;
+}
+
+#searchDriverField {
+    margin: 5px;
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    padding: 8px;
+    border: 2px solid black;
+
+}
+
+#searchDriverField:hover {
+    border: 2px solid dodgerblue;
+}
+
+#driverSearchbtn {
+    width: 22%;
+    height: 40px;
+    background-color: darkblue;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+
+}
+
+#driverSearchClearBtn {
+    width: 22%;
+    background-color: darkred;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+
+}
+
+#driverSearchbtn :hover {
+    border: 2px solid black;
+}
+
+#driverSearchClearBtn :hover {
+    border: 2px solid black;
+}
+
+.table-container {
+    width: 55%;
+    height: 51vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    padding: 5px;
+    overflow: hidden; /* Hide scrollbars */
+    /*max-height: 50vh;*/
+    border-radius: 10px;
+
+}
+
+.table-container .table {
+    width: 80vw;
+    height: 51vh;
+    background-color: white;
+    /*color: white;*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 .4rem .8rem slategray;
+    overflow: hidden;
+    border-radius: 10px;
+    color: black;
+    padding: 30px;
+
+
+}
+
+.table-header {
+    width: 100%;
+    height: 10%;
+    background-color: transparent;
+    padding: 0rem 1rem;
+    color: black;
+    /*margin-bottom: 15px;*/
+}
+
+.table-body {
+    width: 95%;
+    max-height: calc(89% - .8rem);
+    background-color: white;
+    margin: 1.8rem auto;
+    border-radius: 0.8rem;
+    overflow: auto;
+    box-shadow: 0 .4rem .8rem slategray;
+
+    /*border: 2px solid black;*/
+
+}
+
+#driver-table {
+    width: 100%;
+
+}
+
+table th td {
+    border-collapse: collapse;
+    padding: 1rem;
+
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #1E90FF;
+    margin: 0;
+    padding: 0;
+
+}
+
+.table-body ::-webkit-scrollbar {
+    width: 0;
+}
+
+/*.table-body ::-webkit-scrollbar-thumb {*/
+/*    border-radius: .5rem;*/
+/*    background-color: grey;*/
+/*    visibility: hidden;*/
+/*}*/
+
+/*.table-body:hover ::-webkit-scrollbar-thumb {*/
+/*    visibility: visible;*/
+/*}*/
+
+tbody tr:nth-child(even) {
+    background-color: lightslategray;
+}
+
+tbody tr:hover {
+    background-color: white;
 }
