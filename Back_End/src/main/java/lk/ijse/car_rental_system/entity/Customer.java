@@ -3,9 +3,8 @@ package lk.ijse.car_rental_system.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,9 +12,10 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@ToString
+//@ToString
 public class Customer {
     @Id
+    @Column(name = "customer_id", columnDefinition = "VARCHAR(64)")
     private String customerId;
     private String nic;
     private String customerName;
@@ -24,7 +24,6 @@ public class Customer {
     private String customerLicenceNo;
     private String customerEmail;
     private String imagePath; // Store the file path or identifier
-
 
 
 }

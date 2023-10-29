@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+
 /*....................................*/
 
 .sidebar {
@@ -29,6 +30,7 @@
     height: 80px;
     padding: 10px;
 }
+
 .menu li {
     padding: 0.8rem;
     margin: 20px 0;
@@ -118,7 +120,7 @@ td img {
     overflow: auto;
 }
 
-#customer-table {
+table {
     width: 100%;
 
 }
@@ -173,8 +175,8 @@ tbody tr:hover {
 
 }
 
- /*.approve-button {*/
- /*    background-color: #007bff;*/
- /*    color: white;*/
- /*    pointer-events: none;*/
- /*}*/
+/*.approve-button {*/
+/*    background-color: #007bff;*/
+/*    color: white;*/
+/*    pointer-events: none;*/
+/*}*/

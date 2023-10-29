@@ -116,16 +116,6 @@
                     <span class="details">Driver Driving Licence No </span>
                     <Input type="text" id="txtDriverLicenceNo" placeholder="Enter Your Driving Licence No">
                 </div>
-                <!--            <div class=" input-box">-->
-                <!--                <span class="details">Customer Email</span>-->
-                <!--                <Input type="email" id="emailInput" placeholder="Enter Your Email Address">-->
-                <!--            </div>-->
-
-                <!--            <div class=" input-box">-->
-                <!--                <span class="details">Upload Nic Image Or Licence Image</span>-->
-                <!--                <div id="showImg"></div>-->
-                <!--                <input type="file" id="inputField">-->
-                <!--            </div>-->
                 <div class="button">
                     <input type="submit" value="Register">
                 </div>
@@ -133,17 +123,17 @@
         </form>
     </div>
     <div class="btn-panel">
-        <div class="btn">
-            <input type="submit" value="Update">
+        <div class="btn" id="btnUpdate">
+            <input type="button" value="Update">
         </div>
-        <div class="btn">
-            <input type="submit" value="Delete">
+        <div class="btn" id="btnDelete">
+            <input type="button" value="Delete">
         </div>
-        <div class="btn">
-            <input type="submit" value="ClearAll">
+        <div class="btn" id="btnClearAll">
+            <input type="button" value="ClearAll">
         </div>
-        <div class="btn">
-            <input type="submit" value="GetAll">
+        <div class="btn" id="btnGetAll">
+            <input type="button" value="GetAll">
         </div>
     </div>
 
@@ -151,9 +141,9 @@
         <h3 class="searchDriverTitle">Search Driver Here</h3>
         <form>
             <input id="searchDriverField" type="search" placeholder="Input DriverNic">
-            <button id="driverSearchbtn" type="submit">Search
+            <button id="driverSearchbtn" type="button">Search
             </button>
-            <button id="driverSearchClearBtn" type="submit">clear</button>
+            <button id="driverSearchClearBtn" type="button">clear</button>
 
         </form>
     </div>
@@ -166,60 +156,15 @@
                 <table id="driver-table">
                     <thead>
                     <tr>
-                        <th>Customer ID</th>
-                        <th>NIC</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Contact</th>
-                        <th>Licence No</th>
+                        <th>Driver ID</th>
+                        <th>Driver NIC</th>
+                        <th>Driver Name</th>
+                        <th>Driver Address</th>
+                        <th>Driver Contact</th>
+                        <th>Driver Licence No</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>D001</td>
-                        <td>200222</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-
-                    </tr>
-                    <tr>
-                        <td>D001</td>
-                        <td>200222</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-
-                    </tr>
-                    <tr>
-                        <td>D001</td>
-                        <td>200222</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-
-                    </tr>
-                    <tr>
-                        <td>D001</td>
-                        <td>200222</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-
-                    </tr>
-                    <tr>
-                        <td>D001</td>
-                        <td>200222</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-
-                    </tr>
                     </tbody>
                 </table>
             </section>
@@ -230,5 +175,7 @@
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="../controller/DriverController.js"></script>
+
 </body>
 </html>

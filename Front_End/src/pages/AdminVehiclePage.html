@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>AdminVehiclePage</title>
+    <script src="../assests/lib/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../styles/RegisteredCustomersDashboard.css">
+    <link rel="stylesheet" href="../assests/lib/css/normalize.css">
+    <link rel="stylesheet" href="../assests/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assests/lib/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../styles/AdminVehiclePageStyle.css">
 </head>
 <body>
 
@@ -38,7 +44,7 @@
                     </i>
                     <span>Booking</span></a>
             </li>
-            <li class="active">
+            <li>
                 <a href="#">
                     <i>
                         <ion-icon name="card-outline"></ion-icon>
@@ -52,6 +58,13 @@
                     </i>
                     <span>Payment</span>
                 </a>
+            </li>
+            <li class="active">
+                <a href="#">
+                    <i>
+                        <ion-icon name="card-outline"></ion-icon>
+                    </i>
+                    <span>Vehicle</span></a>
             </li>
             <li>
                 <a href="#">
@@ -81,27 +94,27 @@
 </div>
 <div class="driver_sec">
     <div class="register-form-container">
-        <h1 class="title-driverForm">Driver Form</h1>
-        <form id="driver-form" action="#">
+        <h1 class="title-driverForm">Vehicle Form</h1>
+        <form id="vehicle-form" action="#">
             <div class="userDetails">
                 <div class="input-box">
-                    <span class="details">Driver Id </span>
-                    <Input type="text" id="txtDriverId" placeholder="Enter Id Like 'D001'">
+                    <span class="details">Vehicle Id </span>
+                    <Input type="text" id="txtVehicleId" placeholder="Enter Id Like 'V001'">
                 </div>
                 <div class="input-box">
-                    <span class="details">Driver Nic </span>
+                    <span class="details">Registration No </span>
                     <Input type="text" id="txtDriverNic" placeholder="Enter Your Nic">
                 </div>
                 <div class="input-box">
-                    <span class="details">Driver Name </span>
+                    <span class="details">Vehicle Brand</span>
                     <Input type="text" id="txtDriverName" placeholder="Enter Your Full Name ">
                 </div>
                 <div class="input-box">
-                    <span class="details">Driver Address </span>
+                    <span class="details"> Vehicle Colour</span>
                     <Input type="text" id="txtDriverAddress" placeholder="Enter Your Address ">
                 </div>
                 <div class="input-box">
-                    <span class="details">Driver Contact </span>
+                    <span class="details">Vehicle Type</span>
                     <Input type="text" id="txtDriverContact" placeholder="Enter Your Contact number ">
                 </div>
                 <div class="input-box">
@@ -120,68 +133,38 @@
                     <span class="details">Customer Email</span>
                     <Input type="email" id="emailInput" placeholder="Enter Your Email Address">
                 </div>
-                <div class="button">
-                    <input type="submit" value="Register">
+                <div class=" input-box">
+                    <span class="details">Customer Email</span>
+                    <Input type="email" id="emailInput" placeholder="Enter Your Email Address">
                 </div>
+                <div class=" input-box">
+                    <span class="details">Customer Email</span>
+                    <Input type="email" id="emailInput" placeholder="Enter Your Email Address">
+                </div>
+                <div class=" input-box">
+                    <span class="details">Customer Email</span>
+                    <Input type="email" id="emailInput" placeholder="Enter Your Email Address">
+                </div>
+
             </div>
         </form>
     </div>
     <div class="btn-panel">
-        <div class="btn">
-            <input type="submit" value="Update">
+        <div class="btn" id="btnVehicleAdd">
+            <input type="submit" value="Register">
         </div>
-        <div class="btn">
-            <input type="submit" value="Delete">
+        <div class="btn" id="btnVehicleUpdate">
+            <input type="button" value="Update">
         </div>
-        <div class="btn">
-            <input type="submit" value="ClearAll">
+        <div class="btn" id="btnVehicleDelete">
+            <input type="button" value="Delete">
         </div>
-        <div class="btn">
-            <input type="submit" value="GetAll">
+        <div class="btn" id="btnVehicleClearAll">
+            <input type="button" value="ClearAll">
         </div>
-    </div>
-
-    <div class="searchDriver">
-        <h3 class="searchDriverTitle">Search Driver Here</h3>
-        <form>
-            <input id="searchDriverField" type="search" placeholder="Input DriverNic">
-            <button id="driverSearchbtn" type="submit">Search
-            </button>
-            <button id="driverSearchClearBtn" type="submit">clear</button>
-
-        </form>
-    </div>
-    <div class="table-container" style="margin-bottom: 130px;position: absolute;top: 50%;left: 43%;">
-        <section class="table">
-            <section class="table-header">
-                <h1>Driver Table</h1>
-            </section>
-            <section class="table-body">
-                <table id="driver-table">
-                    <thead>
-                    <tr>
-                        <th>Customer ID</th>
-                        <th>NIC</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Contact</th>
-                        <th>Licence No</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>D001</td>
-                        <td>200222</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-                        <td>Kamal</td>
-
-                    </tr>
-                    </tbody>
-                </table>
-            </section>
-        </section>
+        <!--        <div class="btn">-->
+        <!--            <input type="button" value="GetAll">-->
+        <!--        </div>-->
     </div>
 </div>
 

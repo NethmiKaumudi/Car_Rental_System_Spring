@@ -3,7 +3,6 @@ package lk.ijse.car_rental_system.service.impl;
 import lk.ijse.car_rental_system.dto.CustomerDTO;
 import lk.ijse.car_rental_system.entity.Customer;
 import lk.ijse.car_rental_system.repository.CustomerRepo;
-import lk.ijse.car_rental_system.repository.UserRepo;
 import lk.ijse.car_rental_system.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import javax.transaction.Transactional;
 
 @Service
 @Transactional
-public class CustomerServiceImpl  implements CustomerService {
+public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepo customerRepo;
 
@@ -22,9 +21,9 @@ public class CustomerServiceImpl  implements CustomerService {
 
     @Override
     public void addCustomer(CustomerDTO dto) {
-//        if (CustomerRepo.existsById(dto.getCustomerId())) {
-//            throw new RuntimeException(dto.getCustomerId() + "is already available, please insert a new ID");
-//        }
+        if (customerRepo.existsById(dto.getCustomerId())) {
+            throw new RuntimeException(dto.getCustomerId() + "is already available, please insert a new ID");
+        }
         Customer map = mapper.map(dto, Customer.class);
         customerRepo.save(map);
     }

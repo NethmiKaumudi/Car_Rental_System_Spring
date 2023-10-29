@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AdminVehicleLoad</title>
+    <link rel="stylesheet" href="../styles/RegisteredCustomersDashboard.css">
+    <link rel="stylesheet" href="../assests/lib/css/normalize.css">
+    <link rel="stylesheet" href="../assests/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assests/lib/fontawesome-free-6.4.0-web/css/all.min.css">
+    <!--    <link rel="stylesheet" href="../styles/AdminVehiclePageStyle.css">-->
+    <link rel="stylesheet" href="../styles/AdminVehicleLoadPageStyle.css">
+
+    <!--    <link rel="stylesheet" href="../styles/AdminVehiclePageStyle.css">-->
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo">
+        <ul class="menu">
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="stats-chart-outline"></ion-icon>
+                    </i>
+                    <span>DashBoard</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="checkmark-done-outline"></ion-icon>
+                        <!--                        <ion-icon name="man-outline"></ion-icon>-->
+                    </i>
+                    <span>Customer</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="bookmarks-outline"></ion-icon>
+                    </i>
+                    <span>Table Customer</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="bookmarks-outline"></ion-icon>
+                    </i>
+                    <span>Booking</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="card-outline"></ion-icon>
+                    </i>
+                    <span>Driver</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="card-outline"></ion-icon>
+                    </i>
+                    <span>Payment</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="card-outline"></ion-icon>
+                    </i>
+                    <span>Vehicle</span></a>
+            </li>
+            <li class="active">
+                <a href="#">
+                    <i>
+                        <ion-icon name="card-outline"></ion-icon>
+                    </i>
+                    <span>Table Vehicle</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="card-outline"></ion-icon>
+                    </i>
+                    <span>Maintenance</span></a>
+            </li>
+
+            <li class="logout">
+                <a href="#">
+                    <i>
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </i>
+                    <span>LogOut</span></a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="table-container">
+    <section class="table">
+        <div class="sorting-container">a
+            <label for="sort-select">Sort by:</label>
+            <select id="sort-select">
+                <option value="customer_id">Customer ID</option>
+                <option value="nic">NIC</option>
+                <option value="name">Name</option>
+                <option value="address">Address</option>
+                <option value="contact">Contact</option>
+                <option value="licence_no">Licence No</option>
+                <option value="email">DistanceDriven</option>
+            </select>
+        </div>
+        <section class="table-header">
+            <h1>Vehicle Table</h1>
+            <input id="searchField" type="search" placeholder="Input Vehicle Id">
+        </section>
+        <section class="table-body">
+            <table id="vehicle-table">
+                <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>NIC</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                    <th>Licence No</th>
+                    <th>Email</th>
+                    <th>Image</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Customer data will be displayed here -->
+                </tbody>
+            </table>
+        </section>
+    </section>
+</div>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</body>
+</html>

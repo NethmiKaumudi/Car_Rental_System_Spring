@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 @Data
 public class CustomerDTO {
     private String customerId;
