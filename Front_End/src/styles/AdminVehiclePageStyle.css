@@ -121,7 +121,7 @@
 }
 
 form .userDetails .input-box {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     width: calc(100% / 2 - 10px);
 }
 
@@ -132,7 +132,7 @@ form .userDetails .input-box {
 }
 
 .userDetails .input-box input {
-    height: 45px;
+    height: 35px;
     width: 100%;
     outline: none;
     border-radius: 8px;

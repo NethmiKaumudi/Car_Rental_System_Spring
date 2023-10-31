@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CustomerBookingPage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
+    <link rel="stylesheet" href="/assests/lib/css/normalize.css">
+    <link rel="stylesheet" href="/assests/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/CustomerBookingPageStyle.css">
+    <link rel="stylesheet" href="../assests/lib/fontawesome-free-6.4.0-web/css/all.min.css">
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo">
+        <ul class="menu">
+            <li>
+                <a href="RegisteredCustomerDashBoard.html">
+                    <i>
+                        <ion-icon name="car-outline"></ion-icon>
+                    </i>
+                    <span>Cars</span></a>
+            </li>
+            <li class="#">
+                <a href="#">
+                    <i>
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </i>
+                    <span>Customer</span></a>
+            </li>
+            <li class="active">
+                <a href="BookingPage.html">
+                    <i>
+                        <ion-icon name="bookmarks-outline"></ion-icon>
+                    </i>
+                    <span>Booking</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="card-outline"></ion-icon>
+                    </i>
+                    <span>Payment</span></a>
+            </li>
+
+            <li class="logout">
+                <a href="#">
+                    <i>
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </i>
+                    <span>LogOut</span></a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <h1>Booking Form</h1>
+
+    <div class="bookingContainer">
+        <div class="subContainer" id="firstSubContainer">
+            <div class="containerHeader">Invoice Details</div>
+            <div class="containerBody">
+                <div class="input-box">
+                    <span class="details">Booking Id </span>
+                    <Input type="text" id="txtBookingId" placeholder="Enter Id Like 'B001'" required readonly>
+                </div>
+                <div class="input-box">
+                    <span class="details">Taken Date </span>
+                    <Input type="date" id="txtTakenDate">
+                </div>
+                <div class="input-box">
+                    <span class="details">Return Date </span>
+                    <Input type="date" id="txtReturnDate">
+                </div>
+                <div class="input-box">
+                    <span class="details">Taken Location</span>
+                    <Input type="text" id="txtTakenLocation" placeholder="Enter Taken Location">
+                </div>
+                <div class="input-box">
+                    <span class="details"> Return Location </span>
+                    <Input type="text" id="txtReturnLocation" placeholder="Enter Return Location">
+                </div>
+            </div>
+        </div>
+        <div class="subContainer" id="secondSubContainer">
+            <div class="containerHeader">Vehicle Details</div>
+            <div class="containerBody">
+                <div class="input-box">
+                    <span class="details">Vehicle Id </span>
+                    <select class="form-select  text-black focus-ring-warning focus-ring"
+                            aria-label="Default select example" id="selectVehicleId">
+                        <option selected>Select Id</option>
+
+                    </select></div>
+                <div class="input-box">
+                    <span class="details">Rate Duration</span>
+                    <select class="form-select  text-black focus-ring-warning focus-ring"
+                            aria-label="Default select example" id="selectVehicleRateDuration">
+                        <option selected id="daily">Daily</option>
+                        <option selected id="monthly">Monthly</option>
+                    </select></div>
+                <div class="input-box">
+                    <span class="details">Vehicle Rates</span>
+                    <Input type="text" id="txtVehicleRate" placeholder="Enter Vehicle Rate">
+                </div>
+                <div class="input-box">
+                    <span class="details">Free Kilometers(Km)</span>
+                    <Input type="text" id="txtFreeKms" placeholder="Enter Free Kilometers(Km)">
+                </div>
+                <div class="input-box">
+                    <span class="details">Extra Km Price</span>
+                    <Input type="text" id="txtExtraKmPrice" placeholder="Enter Extra Km Price">
+                </div>
+                <div class="input-box">
+                    <span class="details">Vehicle Qty</span>
+                    <Input type="text" id="txtVehicleQty" placeholder="Enter Vehicle Qty">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="subContainer" id="thirdSubContainer">
+
+            <div class="containerHeader">Driver Details</div>
+            <div class="containerBody">
+                <div class="radio-box">
+                    <span class="details">Is Driver Need?</span>
+                    <div class="radio-buttons">
+                        <label><input type="radio" name="driverAvailability" value="yes">Yes</label>
+                        <label><input type="radio" name="driverAvailability" value="no">No</label>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <span class="details">Customer Id </span>
+                    <select class="form-select  text-black focus-ring-warning focus-ring"
+                            aria-label="Default select example" id="selectCustomerId">
+                        <option selected>Select Id</option>
+
+                    </select></div>
+                <div class="input-box">
+                    <span class="details">Customer Nic </span>
+                    <Input type="text" id="txtNicInput" placeholder="Enter Your Nic">
+                </div>
+                <div class="input-box">
+                    <span class="details">Customer Name </span>
+                    <Input type="text" id="txtNameInput" placeholder="Enter Your Full Name ">
+                </div>
+                <div class="input-box">
+                    <span class="details">Customer Contact </span>
+                    <Input type="text" id="txtContactInput" placeholder="Enter Your Contact number ">
+                </div>
+                <div class=" input-box">
+                    <span class="details">Customer Email</span>
+                    <Input type="email" id="txtEmailInput" placeholder="Enter Your Email Address">
+                </div>
+            </div>
+
+        </div>
+        <div class="subContainer" id="fourthSubContainer">
+            <div class="containerHeader">Payment Details</div>
+            <div class="containerBody">
+                <div class="input-box">
+                    <span class="details">Loss Damage Vawier</span>
+                    <Input type="text" id="txtLossDamageVawier" placeholder="Enter Loss Damage Vawier">
+                </div>
+
+                <div class="button">
+                    <input type="submit" value="Booking">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="/assests/lib/js/jquery-3.7.0.min.js"></script>
+<script src="/assests/lib/js/bootstrap.min.js"></script>
+<script src="../controller/BookingPageController.js"></script>
+
+
+</body>
+</html>

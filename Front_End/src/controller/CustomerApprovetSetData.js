@@ -15,12 +15,12 @@ $(document).ready(function () {
             <tr>
                 <td>${newCustomer.customerId}</td>
                 <td>${newCustomer.nic}</td>
-                <td>${newCustomer.name}</td>
-                <td>${newCustomer.address}</td>
-                <td>${newCustomer.contact}</td>
-                <td>${newCustomer.licenceNo}</td>
-                <td>${newCustomer.email}</td>
-                <td><img src="${newCustomer.image}" alt="Customer Image" width="100"></td>
+                <td>${newCustomer.customerName}</td>
+                <td>${newCustomer.customerAddress}</td>
+                <td>${newCustomer.customerContact}</td>
+                <td>${newCustomer.customerLicenceNo}</td>
+                <td>${newCustomer.customerEmail}</td>
+                <td><img src="${newCustomer.imagePath}" alt="Customer Image" width="100"></td>
                 <td>${approveButton}</td>
             </tr>`;
         $('#customer-table tbody').append(newRow);
@@ -35,7 +35,7 @@ $(document).ready(function () {
         // Send an AJAX request to your Spring backend to approve and insert the data
         $.ajax({
             type: 'POST',
-            url: BASE_URL+'customer',
+            url: BASE_URL + 'customer',
             data: {customerId: customerId},
             success: function (data) {
                 // Data successfully approved and inserted into the database

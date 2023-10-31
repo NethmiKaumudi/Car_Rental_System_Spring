@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    Content-Security-Policy: script-src 'self' 'unsafe-inline';
+
+}
+
+body {
+    display: flex;
+
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 7vw;
+    height: 100vh;
+    padding: 0 1.7rem;
+    color: black;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    background: linear-gradient(to top, black, #007bff);
+}
+
+.sidebar:hover {
+    width: 240px;
+    transition: 0.5s;
+}
+
+.sidebar.logo {
+    height: 80px;
+    padding: 16px;
+}
+
+.menu {
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 1rem;
+    margin: 50px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.menu li:hover, .active {
+    background: lightslategray;
+
+}
+
+.menu li a {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem
+}
+
+.menu li a:hover {
+    color: black;
+}
+
+.menu li a span {
+    overflow: hidden;
+}
+
+.menu li a i {
+    font-size: 1.2rem;
+}
+
+.logout {
+    position: absolute;
+    top: 460px;
+    left: 0px;
+    width: 100%;
+}
+
+/*cars*/
+.container {
+    max-width: 96vw;
+    margin: 0 auto;
+    /*padding: 3rem 2rem;*/
+    background: linear-gradient(135deg, dodgerblue, white);
+
+}
+
+.container > h1 {
+    font-size: 3rem;
+    color: black;
+    /*margin-bottom: 2.5rem;*/
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.bookingContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    width: 96%;
+    height: 85vh;
+}
+
+.bookingContainer .subContainer {
+    width: 100%;
+    border: 2px solid black;
+    margin-left: 20px;
+    background: white;
+    box-shadow: 0 .4rem .8rem slategray;
+    border-radius: 10px;
+    /*height: auto;*/
+}
+
+.containerHeader {
+    background-color: #007bff;
+    height: 35px;
+    border-radius: 8px 8px 0 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.5rem;
+
+}
+
+.containerBody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+
+}
+
+.containerBody .input-box {
+    margin-bottom: 8px;
+    width: calc(100% / 2 - 10px);
+}
+
+.containerBody .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    margin-left: 4px;
+
+}
+
+.containerBody .input-box input, select {
+    height: 35px;
+    width: 96%;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid #1b1e21;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    margin-left: 4px;
+
+}
+
+.containerBody .input-box input:focus,
+.containerBody .input-box input:valid {
+    border-color: black;
+}
+
+.containerBody .input-box input:hover {
+    border-color: #1E90FF;
+
+}
+
+.containerBody .input-box select:focus,
+.containerBody .input-box select:valid {
+    border-color: black;
+}
+
+.containerBody .input-box select:hover {
+    border-color: #1E90FF;
+
+}
+
+.containerBody .button {
+    height: 45px;
+    margin: 45px 0;
+    width: 40%;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+
+.containerBody .button input {
+    width: 100%;
+    height: 45px;
+    background: linear-gradient(90deg, black, dodgerblue);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    margin-left: -180px;
+    margin-top: 50px;
+    /*transition: all .2s ease;*/
+}
+
+.containerBody .button input:hover {
+    background: linear-gradient(135deg, black, white, black);
+    color: black;
+    transform: scale(1);
+
+}
+
+/* Style for radio buttons */
+.radio-box {
+    margin-bottom: 8px;
+    width: calc(100% / 2 - 10px);
+}
+
+.radio-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    margin-left: 4px;
+}
+
+.radio-box input[type="radio"] {
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+/* Style for radio buttons label */
+.radio-box label {
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+/* Style for the checked radio button */
+.radio-box input[type="radio"]:checked + label {
+    color: white;
+    background-color: dodgerblue;
+    border-radius: 8px;
+    padding: 5px 10px;
+}

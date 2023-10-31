@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
+    <link rel="stylesheet" href="/assests/lib/css/normalize.css">
+    <link rel="stylesheet" href="/assests/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/CustomerBookingPageStyle.css">
+    <link rel="stylesheet" href="/styles/GuestCustomerPage.css">
+    <link rel="stylesheet" href="../assests/lib/fontawesome-free-6.4.0-web/css/all.min.css">
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo">
+        <ul class="menu">
+            <li>
+                <a href="RegisteredCustomerDashBoard.html">
+                    <i>
+                        <ion-icon name="car-outline"></ion-icon>
+                    </i>
+                    <span>Cars</span></a>
+            </li>
+            <li class="#">
+                <a href="#">
+                    <i>
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </i>
+                    <span>Customer</span></a>
+            </li>
+            <li class="active">
+                <a href="BookingPage.html">
+                    <i>
+                        <ion-icon name="bookmarks-outline"></ion-icon>
+                    </i>
+                    <span>Booking</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <ion-icon name="card-outline"></ion-icon>
+                    </i>
+                    <span>Payment</span></a>
+            </li>
+
+            <li class="logout">
+                <a href="#">
+                    <i>
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </i>
+                    <span>LogOut</span></a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="register-form-container">
+    <h1 class="title-customerRegister">Customer Register Form</h1>
+    <form id="register-form" action="#">
+        <div class="userDetails">
+            <div class="input-box">
+                <span class="details">Customer Id </span>
+                <Input type="text" id="customerIdInput" placeholder="Enter Id Like 'C001'">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Nic </span>
+                <Input type="text" id="nicInput" placeholder="Enter Your Nic">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Name </span>
+                <Input type="text" id="nameInput" placeholder="Enter Your Full Name ">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Address </span>
+                <Input type="text" id="addressInput" placeholder="Enter Your Address ">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Contact </span>
+                <Input type="text" id="contactInput" placeholder="Enter Your Contact number ">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Driving Licence No </span>
+                <Input type="text" id="licenceNoInput" placeholder="Enter Your Driving Licence No">
+            </div>
+            <div class=" input-box">
+                <span class="details">Customer Email</span>
+                <Input type="email" id="emailInput" placeholder="Enter Your Email Address">
+            </div>
+
+            <div class=" input-box">
+                <span class="details">Upload Nic Image Or Licence Image</span>
+                <div id="showImg"></div>
+                <input type="file" id="inputField">
+            </div>
+            <div class="button" id="btnCustomerUpdate">
+                <input type="button" value="update">
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -13,5 +13,5 @@ public interface DriverService {
 
     public DriverDTO findDriver(String id);
 
-    public void updateDriver(DriverDTO c);
+    public void updateDriver(DriverDTO dto);
 }
