@@ -21,5 +21,7 @@ public class Driver {
     private String driverAddress;
     private String driverContact;
     private String driverLicenceNo;
+    private String driverStatus;
+
 
 }

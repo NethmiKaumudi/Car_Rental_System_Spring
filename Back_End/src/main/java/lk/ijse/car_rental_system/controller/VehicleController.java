@@ -4,6 +4,7 @@ package lk.ijse.car_rental_system.controller;
 import lk.ijse.car_rental_system.dto.VehicleDTO;
 import lk.ijse.car_rental_system.service.VehicleService;
 import lk.ijse.car_rental_system.util.ResponseUtil;
+import lk.ijse.car_rental_system.util.SortingOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -105,5 +107,24 @@ public class VehicleController {
         }
     }
 
+    //    @GetMapping("/sort/{sortOption}")
+//    @ResponseBody
+//    public List<VehicleDTO> sortVehicles(@PathVariable String sortOption) {
+//        List<VehicleDTO> sortedVehicles = vehicleService.sortVehicles(sortOption);
+//        return sortedVehicles;
+//    }
+    @GetMapping("/sort")
+    public ResponseEntity<List<VehicleDTO>> sortVehicles(@RequestParam String sortOption) {
+        try {
+            SortingOptions sortingOption = SortingOptions.valueOf(sortOption);
+            logger.info("Received sort request with sortOption: " + sortingOption);
+            List<VehicleDTO> sortedVehicles = vehicleService.sortVehicles(sortingOption);
+            logger.info("Returning sorted vehicles: " + sortedVehicles);
+            return ResponseEntity.ok(sortedVehicles);
+        } catch (IllegalArgumentException e) {
+            logger.error("Invalid sortOption: " + sortOption);
+            return ResponseEntity.badRequest().body(Collections.emptyList());
+        }
+    }
 
 }

@@ -251,7 +251,10 @@ $(document).ready(function () {
             "vehicleType": $('#txtVehicleType').val(),
             "noOfPassengers": $('#txtNoOfPassengers').val(),
             "dailyRate": $('#txtDailyRate').val(),
+            "freeKmADay": $('#txtFreeKmADay').val(),
             "monthlyRate": $('#txtMonthlyRate').val(),
+            "freeKmAMonth": $('#txtFreeKmAMonth').val(),
+            "priceExtraKm": $('#txtPriceExtraKm').val(),
             "fuelType": $('#txtFuelType').val(),
             "transmissionType": $('#txtTransmissionType').val(),
             "distanceDriven": $('#txtDistanceDriven').val(),
@@ -259,20 +262,20 @@ $(document).ready(function () {
         };
 
         // Handle optional fields
-        const freeKmADay = $('#txtFreeKmADay').val().trim();
-        if (freeKmADay) {
-            vehicleData["freeKmForADay"] = freeKmADay;
-        }
-
-        const freeKmAMonth = $('#txtFreeKmAMonth').val().trim();
-        if (freeKmAMonth) {
-            vehicleData["freeKmForAMonth"] = freeKmAMonth;
-        }
-
-        const priceExtraKm = $('#txtPriceExtraKm').val().trim();
-        if (priceExtraKm) {
-            vehicleData["priceForExtraKm"] = priceExtraKm;
-        }
+        // const freeKmADay = $('#txtFreeKmADay').val().trim();
+        // if (freeKmADay) {
+        //     vehicleData["freeKmForADay"] = freeKmADay;
+        // }
+        //
+        // const freeKmAMonth = $('#txtFreeKmAMonth').val().trim();
+        // if (freeKmAMonth) {
+        //     vehicleData["freeKmForAMonth"] = freeKmAMonth;
+        // }
+        //
+        // const priceExtraKm = $('#txtPriceExtraKm').val().trim();
+        // if (priceExtraKm) {
+        //     vehicleData["priceForExtraKm"] = priceExtraKm;
+        // }
 
         $.ajax({
             url: BASE_URL + 'vehicle',
@@ -300,7 +303,10 @@ $(document).ready(function () {
             "vehicleType": $('#txtVehicleType').val(),
             "noOfPassengers": $('#txtNoOfPassengers').val(),
             "dailyRate": $('#txtDailyRate').val(),
+            "freeKmADay": $('#txtFreeKmADay').val(),
             "monthlyRate": $('#txtMonthlyRate').val(),
+            "freeKmAMonth": $('#txtFreeKmAMonth').val(),
+            "priceExtraKm": $('#txtPriceExtraKm').val(),
             "fuelType": $('#txtFuelType').val(),
             "transmissionType": $('#txtTransmissionType').val(),
             "distanceDriven": $('#txtDistanceDriven').val(),
@@ -308,20 +314,20 @@ $(document).ready(function () {
         };
 
         // Handle optional fields
-        const freeKmADay = $('#txtFreeKmADay').val().trim();
-        if (freeKmADay) {
-            vehicleData["freeKmForADay"] = freeKmADay;
-        }
-
-        const freeKmAMonth = $('#txtFreeKmAMonth').val().trim();
-        if (freeKmAMonth) {
-            vehicleData["freeKmForAMonth"] = freeKmAMonth;
-        }
-
-        const priceExtraKm = $('#txtPriceExtraKm').val().trim();
-        if (priceExtraKm) {
-            vehicleData["priceForExtraKm"] = priceExtraKm;
-        }
+        // const freeKmADay = $('#txtFreeKmADay').val().trim();
+        // if (freeKmADay) {
+        //     vehicleData["freeKmForADay"] = freeKmADay;
+        // }
+        //
+        // const freeKmAMonth = $('#txtFreeKmAMonth').val().trim();
+        // if (freeKmAMonth) {
+        //     vehicleData["freeKmForAMonth"] = freeKmAMonth;
+        // }
+        //
+        // const priceExtraKm = $('#txtPriceExtraKm').val().trim();
+        // if (priceExtraKm) {
+        //     vehicleData["priceForExtraKm"] = priceExtraKm;
+        // }
 
         $.ajax({
             url: BASE_URL + 'vehicle',
@@ -393,10 +399,10 @@ $(document).ready(function () {
             <td>${vehicle.vehicleType}</td>
             <td>${vehicle.noOfPassengers}</td>
             <td>${vehicle.dailyRate}</td>
-            <td>${vehicle.freeKmForADay}</td>
+            <td>${vehicle.freeKmADay}</td>
             <td>${vehicle.monthlyRate}</td>
-            <td>${vehicle.freeKmForAMonth}</td>
-            <td>${vehicle.priceForExtraKm}</td>
+            <td>${vehicle.freeKmAMonth}</td>
+            <td>${vehicle.priceExtraKm}</td>
             <td>${vehicle.fuelType}</td>
             <td>${vehicle.transmissionType}</td>
             <td>${vehicle.distanceDriven}</td>
@@ -426,12 +432,71 @@ $(document).ready(function () {
         });
     });
 
-    $("#VehicleSearchClearBtn").click(function () {
-        $("#searchField").val("");
-        showAllRows();
-    });
+    // $("#VehicleSearchClearBtn").click(function () {
+    //     $("#searchField").val("");
+    //     showAllRows();
+    // });
 
     function showAllRows() {
         $('#vehicle-table tbody tr').show();
     }
+
+    //
+    // $('#sort-button').on('click', function () {
+    //     var selectedOption = $("#sort-select").val(); // Get the selected sorting option
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: BASE_URL + 'vehicles/sort/' + selectedOption, // Adjust the URL as needed
+    //         success: function (data) {
+    //             updateTable(data); // Call a function to update the table
+    //         },
+    //         error: function (error) {
+    //             alert('Error: ' + error.message);
+    //         },
+    //     });
+    // });
+    //
+    // // Function to update the table with sorted data
+    function updateTable(sortedData) {
+        var tbody = $('#vehicle-table tbody');
+        tbody.empty(); // Clear the current table rows
+        sortedData.forEach(function (vehicle) {
+            var newRow = `<tr>
+                <td>${vehicle.vehicleId}</td>
+                <td>${vehicle.regNo}</td>
+                <td>${vehicle.vehicleBrand}</td>
+            <td>${vehicle.vehicleColour}</td>
+            <td>${vehicle.vehicleType}</td>
+            <td>${vehicle.noOfPassengers}</td>
+            <td>${vehicle.dailyRate}</td>
+            <td>${vehicle.freeKmADay}</td>
+            <td>${vehicle.monthlyRate}</td>
+            <td>${vehicle.freeKmAMonth}</td>
+            <td>${vehicle.priceExtraKm}</td>
+            <td>${vehicle.fuelType}</td>
+            <td>${vehicle.transmissionType}</td>
+            <td>${vehicle.distanceDriven}</td>
+            <td>${vehicle.qty}</td> 
+                <!-- Add other columns as needed -->
+            </tr>`;
+            tbody.append(newRow);
+        });
+    }
+
+    $('#sort-select').on('change', function () {
+        var selectedOption = $(this).val();
+        $.ajax({
+            type: 'GET',
+            url: BASE_URL + 'vehicle/sort',
+            data: {sortOption: selectedOption.toUpperCase()}, // Ensure it's in uppercase
+            success: function (data) {
+                updateTable(data);
+                setTimeout(populateTable, 2000);
+            },
+            error: function (error) {
+                alert('Error: ' + error.message);
+            },
+        });
+    });
+
 });

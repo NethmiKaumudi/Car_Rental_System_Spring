@@ -1,6 +1,7 @@
 package lk.ijse.car_rental_system.repository;
 
 import lk.ijse.car_rental_system.entity.Vehicle;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -12,5 +13,8 @@ public interface VehicleRepo extends JpaRepository<Vehicle, String> {
     List<String> findVehicleIdsOnly();
 
     Vehicle findByVehicleId(String vehicleId);
+
+    List<Vehicle> findAll(Sort sort);
+
 
 }

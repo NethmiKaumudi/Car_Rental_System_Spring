@@ -25,10 +25,11 @@ public class BookingServiceImpl implements BookingService {
             String lastBookingId = lastBooking.getBookingId();
             // Extract the numeric part and increment it
             int lastBookingNumber = Integer.parseInt(lastBookingId.substring(1));
-            String nextBookingId = "B" + String.format("%04d", lastBookingNumber + 1);
+            String nextBookingId = "B" + String.format("%03d", lastBookingNumber + 1);
             return nextBookingId;
         } else {
             // If there are no bookings yet, start from a predefined number, e.g., B0001
             return "B001";
-        }    }
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package lk.ijse.car_rental_system.service;
 
 import lk.ijse.car_rental_system.dto.VehicleDTO;
+import lk.ijse.car_rental_system.util.SortingOptions;
 
 import java.util.List;
 
@@ -18,5 +19,6 @@ public interface VehicleService {
     List<String> getVehicleIds();
 
     VehicleDTO getVehicleDetails(String vehicleId, String rateDuration);
+    List<VehicleDTO> sortVehicles(SortingOptions sortOption);
 
 }

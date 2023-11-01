@@ -5,6 +5,7 @@ $(document).ready(function () {
     console.log("Document ready!");
     loadVehicleIds();
 
+
     // Function to generate the next booking ID and populate it in the input field
     function generateNextBookingId() {
         console.log("Generating next booking ID...");
@@ -13,8 +14,12 @@ $(document).ready(function () {
             method: 'GET',
             success: function (response) {
                 $('#txtBookingId').val(response);
+                alert('SuccessFully Generated Booking Id ');
+
             },
             error: function (error) {
+                alert('Error: ' + error.message);
+
                 console.error(error);
             }
         });
@@ -53,6 +58,8 @@ $(document).ready(function () {
                     text: customerId
                 }));
             });
+            alert('Success load Customer Ids');
+
         },
         error: function (error) {
             console.error(error);
@@ -77,9 +84,12 @@ $(document).ready(function () {
                     option.value = vehicleId;
                     option.text = vehicleId;
                     selectVehicleId.appendChild(option);
+                    alert('Successfully load Vehicle Ids ');
+
                 });
             },
             error: function (error) {
+                alert('Error: ' + error.message);
                 console.error("Failed to load vehicle IDs: " + error);
             },
         });
@@ -107,33 +117,38 @@ $(document).ready(function () {
                     $("#txtFreeKms").val(data.freeKmAMonth);
                 }
                 $("#txtExtraKmPrice").val(data.priceExtraKm);
+                alert('Successfully loaded Vehicle details');
+
             },
-            error: function () {
-                // Handle errors
+            error: function (error) {
+                alert('Error: ' + error.message);
             },
         });
     });
 
     // Function to get customer details by ID
-    function getCustomerDetailsById(customerId) {
-        $.ajax({
-            url: BASE_URL + 'customer/customer-details', // Replace with your endpoint URL
-            method: 'GET',
-            data: {
-                customerId: customerId
-            },
-            success: function (data) {
-                // Update text fields with customer details
-                $('#txtNicInput').val(data.nic);
-                $('#txtNameInput').val(data.customerName);
-                $('#txtContactInput').val(data.customerContact);
-                $('#txtEmailInput').val(data.customerEmail);
-            },
-            error: function () {
-                // Handle errors here
-            }
-        });
-    }
+    $('#selectCustomerId').on('change', function () {
+        var selectedCustomerId = $(this).val();
+
+        if (selectedCustomerId !== 'Select Id') {
+            $.ajax({
+                type: 'GET',
+                url: BASE_URL + 'customer/' + selectedCustomerId,
+                success: function (data) {
+                    // Populate fields with retrieved customer details
+                    $('#txtNameInput').val(data.customerName);
+                    $('#txtNicInput').val(data.nic);
+                    $('#txtContactInput').val(data.customerContact);
+                    $('#txtEmailInput').val(data.customerEmail);
+                    alert('SuccessFully loaded Customer Data');
+                },
+                error: function (error) {
+                    alert('Error: ' + error.message);
+                    console.error('Error:', error);
+                }
+            });
+        }
+    });
 
 // Trigger the function when the customer ID is selected
     $('#selectCustomerId').on('change', function () {

@@ -9,5 +9,7 @@ public interface CustomerService {
 
     List<String> getCustomerIds();
 
-    CustomerDTO getCustomerDetailsById(String id);
+    CustomerDTO getCustomerDetailsById(String customerId);
+
+    String generateNextCustomerId();
 }

@@ -24,10 +24,10 @@ public class DriverController {
         return new ResponseUtil("Ok", "Successfully Loaded", driverService.getAllDriver());
     }
 
-    @DeleteMapping(params = {"id"})
-    public ResponseUtil deleteDriver(@RequestParam String id) {
-        driverService.deleteDriver(id);
-        return new ResponseUtil("Ok", "Successfully Deleted", id);
+    @DeleteMapping(params = {"driverId"})
+    public ResponseUtil deleteDriver(@RequestParam String driverId) {
+        driverService.deleteDriver(driverId);
+        return new ResponseUtil("Ok", "Successfully Deleted", driverId);
     }
 
     @GetMapping(params = {"id"})

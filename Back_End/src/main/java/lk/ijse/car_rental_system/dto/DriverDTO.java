@@ -14,4 +14,6 @@ public class DriverDTO {
     private String driverAddress;
     private String driverContact;
     private String driverLicenceNo;
+    private String driverStatus;
+
 }

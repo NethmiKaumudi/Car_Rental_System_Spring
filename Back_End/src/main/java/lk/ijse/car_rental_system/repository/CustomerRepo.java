@@ -10,4 +10,9 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
     //    List<String> findByCustomerId();
     @Query("SELECT c.customerId FROM Customer c")
     List<String> findCustomerIdsOnly();
+
+    Customer findByCustomerId(String customerId);
+
+    Customer findTopByOrderByCustomerIdDesc();
+
 }
