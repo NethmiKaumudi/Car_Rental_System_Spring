@@ -1,10 +1,13 @@
 package lk.ijse.car_rental_system.controller;
 
 import lk.ijse.car_rental_system.dto.DriverDTO;
+import lk.ijse.car_rental_system.entity.Driver;
 import lk.ijse.car_rental_system.service.DriverService;
 import lk.ijse.car_rental_system.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/driver")
@@ -39,5 +42,10 @@ public class DriverController {
     public ResponseUtil updateDriver(@RequestBody DriverDTO dto) {
         driverService.updateDriver(dto);
         return new ResponseUtil("Ok", "Successfully Updated", dto);
+    }
+
+    @GetMapping("/available")
+    public List<Driver> getAvailableDrivers() {
+        return driverService.findAvailableDrivers();
     }
 }

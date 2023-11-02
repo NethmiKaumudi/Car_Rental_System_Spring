@@ -1,164 +1,48 @@
-// Add this code to your JavaScript file
 $(document).ready(function () {
     const BASE_URL = "http://localhost:8080/Back_End/";
 
-    console.log("Document ready!");
-    loadVehicleIds();
+    // Retrieve the booking data from local storage
+    const adminBookingData = JSON.parse(localStorage.getItem('bookingData')) || [];
 
+    // Reference to the admin table body
+    const adminTableBody = $('#Booking-table');
 
-    // Function to generate the next booking ID and populate it in the input field
-    function generateNextBookingId() {
-        console.log("Generating next booking ID...");
-        $.ajax({
-            url: BASE_URL + 'bookings/generate-next-booking-id',
-            method: 'GET',
-            success: function (response) {
-                $('#txtBookingId').val(response);
-                alert('SuccessFully Generated Booking Id ');
-
-            },
-            error: function (error) {
-                alert('Error: ' + error.message);
-
-                console.error(error);
-            }
+    // Check if adminBookingData is an array
+    if (Array.isArray(adminBookingData)) {
+        // Loop through the booking data and add it to the admin table
+        adminBookingData.forEach(function (bookingData) {
+            addBookingToAdminTable(bookingData);
         });
+    } else {
+        // Handle the case where adminBookingData is not an array
+        console.error('Invalid admin booking data in local storage.');
     }
 
-    // Call the function to generate the next booking ID when the page loads
-    generateNextBookingId();
-    // Get the current date in the format "YYYY-MM-DD"
-    var currentDate = new Date().toISOString().split('T')[0];
+    console.log(adminBookingData);
 
-    // Set the value of the "Taken Date" input field to the current date
-    $('#txtTakenDate').val(currentDate);
+    function addBookingToAdminTable(bookingData) {
+        console.log(bookingData);
 
+        const newRow = `
+            <tr>
+                <td>${bookingData.bookingId}</td>
+                <td>${bookingData.customerId}</td>
+                <td>${bookingData.customerEmail}</td>
+                <td>${bookingData.vehicleId}</td>
+                <td>${bookingData.driverId || 'Not Applicable'}</td>
+                <td>${bookingData.takenLocation}</td>
+                <td>${bookingData.returnLocation}</td>
+                <td>${bookingData.takenDate}</td>
+                <td>${bookingData.returnDate}</td>
+                <td>${bookingData.lossDamageWaiver}</td>
+                <td>${bookingData.vehicleQty}</td>
+                <td>
+                    <button class="approve-button" onclick="approveBooking(this, '${bookingData.bookingId}')">Approve</button>
+                </td>
+            </tr>`;
 
-    // Reference to your select field
-    const selectField = $('#selectCustomerId');
-
-    // Make an AJAX request to load customer IDs
-    $.ajax({
-        url: BASE_URL + 'customer/getCustomerIds',
-        method: 'GET',
-        success: function (customerIds) {
-            // Clear existing options in the select field
-            selectField.empty();
-
-            // Add a default option
-            selectField.append($('<option>', {
-                value: '',
-                text: 'Select ID'
-            }));
-
-            // Add each customer ID as an option in the select field
-            customerIds.forEach(function (customerId) {
-                selectField.append($('<option>', {
-                    value: customerId,
-                    text: customerId
-                }));
-            });
-            alert('Success load Customer Ids');
-
-        },
-        error: function (error) {
-            console.error(error);
-        }
-    });
-
-    function loadVehicleIds() {
-        const selectVehicleId = document.getElementById("selectVehicleId");
-
-        // Make an AJAX GET request to fetch vehicle IDs
-        $.ajax({
-            url: BASE_URL + "vehicle/getVehicleIds", // The URL of your Spring backend endpoint
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                // Clear the select field
-                selectVehicleId.innerHTML = "";
-
-                // Add options for each vehicle ID
-                data.forEach(function (vehicleId) {
-                    const option = document.createElement("option");
-                    option.value = vehicleId;
-                    option.text = vehicleId;
-                    selectVehicleId.appendChild(option);
-                    alert('Successfully load Vehicle Ids ');
-
-                });
-            },
-            error: function (error) {
-                alert('Error: ' + error.message);
-                console.error("Failed to load vehicle IDs: " + error);
-            },
-        });
+        adminTableBody.append(newRow);
     }
 
-
-    $("#selectVehicleId, #selectVehicleRateDuration").on("change", function () {
-        var vehicleId = $("#selectVehicleId").val();
-        var rateDuration = $("#selectVehicleRateDuration").val();
-
-        $.ajax({
-            url: BASE_URL + 'vehicle/vehicle-detail',
-            method: "GET",
-            data: {
-                vehicleId: vehicleId,
-                rateDuration: rateDuration,
-            },
-            success: function (data) {
-                // Update the form fields with the received data
-                if (rateDuration === "Daily") {
-                    $("#txtVehicleRate").val(data.dailyRate);
-                    $("#txtFreeKms").val(data.freeKmADay);
-                } else if (rateDuration === "Monthly") {
-                    $("#txtVehicleRate").val(data.monthlyRate);
-                    $("#txtFreeKms").val(data.freeKmAMonth);
-                }
-                $("#txtExtraKmPrice").val(data.priceExtraKm);
-                alert('Successfully loaded Vehicle details');
-
-            },
-            error: function (error) {
-                alert('Error: ' + error.message);
-            },
-        });
-    });
-
-    // Function to get customer details by ID
-    $('#selectCustomerId').on('change', function () {
-        var selectedCustomerId = $(this).val();
-
-        if (selectedCustomerId !== 'Select Id') {
-            $.ajax({
-                type: 'GET',
-                url: BASE_URL + 'customer/' + selectedCustomerId,
-                success: function (data) {
-                    // Populate fields with retrieved customer details
-                    $('#txtNameInput').val(data.customerName);
-                    $('#txtNicInput').val(data.nic);
-                    $('#txtContactInput').val(data.customerContact);
-                    $('#txtEmailInput').val(data.customerEmail);
-                    alert('SuccessFully loaded Customer Data');
-                },
-                error: function (error) {
-                    alert('Error: ' + error.message);
-                    console.error('Error:', error);
-                }
-            });
-        }
-    });
-
-// Trigger the function when the customer ID is selected
-    $('#selectCustomerId').on('change', function () {
-        var selectedCustomerId = $(this).val();
-        if (selectedCustomerId) {
-            getCustomerDetailsById(selectedCustomerId);
-        } else {
-            // Clear text fields if no customer is selected
-            $('#txtNicInput, #txtNameInput, #txtContactInput, #txtEmailInput').val('');
-        }
-    });
-
+    // The rest of your code...
 });

@@ -90,7 +90,7 @@ public class VehicleServiceImpl implements VehicleService {
         }
 
         vehicleDTO.setPriceExtraKm(vehicle.getPriceExtraKm());
-
+        vehicleDTO.setLossDamageVawier(vehicle.getLossDamageVawier());
         return vehicleDTO;
     }
 

@@ -55,8 +55,8 @@
 </div>
 <div class="container">
     <h1>Booking Form</h1>
-
     <div class="bookingContainer">
+
         <div class="subContainer" id="firstSubContainer">
             <div class="containerHeader">Invoice Details</div>
             <div class="containerBody">
@@ -112,6 +112,10 @@
                     <Input type="text" id="txtExtraKmPrice" placeholder="Enter Extra Km Price">
                 </div>
                 <div class="input-box">
+                    <span class="details">Loss Damage Vawier</span>
+                    <Input type="text" id="txtLossDamageVawier" placeholder="Enter Loss Damage Vawier">
+                </div>
+                <div class="input-box">
                     <span class="details">Vehicle Qty</span>
                     <Input type="text" id="txtVehicleQty" placeholder="Enter Vehicle Qty">
                 </div>
@@ -153,33 +157,22 @@
                     <span class="details">Customer Email</span>
                     <Input type="email" id="txtEmailInput" placeholder="Enter Your Email Address">
                 </div>
+
             </div>
 
         </div>
-        <div class="subContainer" id="fourthSubContainer">
-            <div class="containerHeader">Payment Details</div>
-            <div class="containerBody">
-                <div class="input-box">
-                    <span class="details">Loss Damage Vawier</span>
-                    <Input type="text" id="txtLossDamageVawier" placeholder="Enter Loss Damage Vawier">
-                </div>
-
-                <div class="button">
-                    <input type="submit" value="Booking">
-                </div>
-            </div>
-
-
+        <div class="button">
+            <input type="submit" value="Booking" id="booking-button">
         </div>
+
     </div>
-</div>
 
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="../assests/lib/js/jquery-3.7.0.min.js"></script>
-<script src="../assests/lib/js/bootstrap.min.js"></script>
-<script src="../controller/BookingPageController.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../assests/lib/js/jquery-3.7.0.min.js"></script>
+    <script src="../assests/lib/js/bootstrap.min.js"></script>
+    <script src="../controller/CustomerBookingPageController.js"></script>
 
 
 </body>

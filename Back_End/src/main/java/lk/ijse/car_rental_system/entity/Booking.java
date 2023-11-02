@@ -43,4 +43,7 @@ public class Booking {
 
     @Column(name = "loss_damage_agreement")
     private String lossDamageAgreement;
+
+    @Column(name = "vehicle_qty")
+    private String vehicleQty;
 }

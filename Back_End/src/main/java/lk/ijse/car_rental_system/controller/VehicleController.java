@@ -36,16 +36,6 @@ public class VehicleController {
         return new ResponseUtil("Ok", "Successfully Loaded", vehicleService.getAllVehicle());
     }
 
-    //    @DeleteMapping(params = {"id"})
-//    public ResponseUtil deleteVehicles(Long id) {
-//        vehicleService.deleteVehicle(id);
-//        return new ResponseUtil("Ok", "Successfully Deleted", id);
-//    }
-//
-//    @GetMapping(params = {"id"})
-//    public ResponseUtil findVehicle(Long id) {
-//        return new ResponseUtil("Ok", "Successfull", vehicleService.findVehicle(id));
-//    }
     @DeleteMapping
     public ResponseUtil deleteVehicles(@RequestParam String id) {
         vehicleService.deleteVehicle(id);
@@ -72,27 +62,6 @@ public class VehicleController {
 
 
     @GetMapping("/vehicle-detail")
-//    public ResponseEntity<VehicleDTO,String> getVehicleDetails(
-//            @RequestParam String vehicleId,
-//            @RequestParam String rateDuration
-//    ) {
-//        VehicleDTO vehicleDTO = vehicleService.getVehicleDetails(vehicleId, rateDuration);
-//
-//        if (vehicleDTO != null) {
-//            return ResponseEntity.ok(vehicleDTO);
-//        } else {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vehicle not found");
-//        }
-//    }
-//    public ResponseEntity<?> getVehicleDetails(@RequestParam String vehicleId, @RequestParam String rateDuration) {
-//        VehicleDTO vehicleDTO = vehicleService.getVehicleDetails(vehicleId, rateDuration);
-//
-//        if (vehicleDTO != null) {
-//            return ResponseEntity.ok(vehicleDTO);
-//        } else {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vehicle not found");
-//        }
-//    }
     public ResponseEntity<?> getVehicleDetails(@RequestParam String vehicleId, @RequestParam String rateDuration) {
         logger.info("Received request for vehicle details with vehicleId: {} and rateDuration: {}", vehicleId, rateDuration);
 
@@ -107,12 +76,6 @@ public class VehicleController {
         }
     }
 
-    //    @GetMapping("/sort/{sortOption}")
-//    @ResponseBody
-//    public List<VehicleDTO> sortVehicles(@PathVariable String sortOption) {
-//        List<VehicleDTO> sortedVehicles = vehicleService.sortVehicles(sortOption);
-//        return sortedVehicles;
-//    }
     @GetMapping("/sort")
     public ResponseEntity<List<VehicleDTO>> sortVehicles(@RequestParam String sortOption) {
         try {

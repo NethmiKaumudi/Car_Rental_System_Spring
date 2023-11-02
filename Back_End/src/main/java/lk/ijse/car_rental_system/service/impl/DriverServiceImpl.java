@@ -62,4 +62,8 @@ public class DriverServiceImpl implements DriverService {
         Driver map = mapper.map(c, Driver.class);
         driverRepo.save(map);
     }
+
+    public List<Driver> findAvailableDrivers() {
+        return driverRepo.findByDriverStatus("Available");
+    }
 }
