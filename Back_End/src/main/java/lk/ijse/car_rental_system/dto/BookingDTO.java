@@ -21,4 +21,6 @@ public class BookingDTO {
     private LocalDate takenDate;
     private LocalDate returnDate;
     private String lossDamageAgreement;
+    private String vehicleQty;
+
 }

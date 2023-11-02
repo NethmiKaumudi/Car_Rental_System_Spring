@@ -262,14 +262,3 @@ body {
     padding: 5px 10px;
 }
 
-.approve-button {
-    background-color: limegreen;
-    border-radius: 10px;
-    width: 100px;
-    height: 30px;
-}
-
-.approve-button:hover {
-    background-color: darkgreen;
-
-}

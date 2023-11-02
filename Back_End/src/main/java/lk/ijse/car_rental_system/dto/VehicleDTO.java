@@ -26,6 +26,5 @@ public class VehicleDTO {
     private String distanceDriven;
     private Integer qty;
     private BigDecimal lossDamageVawier;
-    private String vehicleQty;
 
 }

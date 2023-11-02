@@ -3,39 +3,35 @@ $(document).ready(function () {
     console.log("Document ready!");
     loadVehicleIds();
 
-
-// Function to generate the next booking ID and populate it in the input field
+    // Function to generate the next booking ID and populate it in the input field
     function generateNextBookingId() {
-        console.log("Generating next booking ID...");
+        console.log("Generating the next booking ID...");
         $.ajax({
             url: BASE_URL + 'bookings/generate-next-booking-id',
             method: 'GET',
             success: function (response) {
                 $('#txtBookingId').val(response);
-                // alert('SuccessFully Generated Booking Id ');
-
             },
             error: function (error) {
                 alert('Error: ' + error.message);
-
                 console.error(error);
             }
         });
     }
 
-// Call the function to generate the next booking ID when the page loads
+    // Call the function to generate the next booking ID when the page loads
     generateNextBookingId();
-// Get the current date in the format "YYYY-MM-DD"
+
+    // Get the current date in the format "YYYY-MM-DD"
     var currentDate = new Date().toISOString().split('T')[0];
 
-// Set the value of the "Taken Date" input field to the current date
+    // Set the value of the "Taken Date" input field to the current date
     $('#txtTakenDate').val(currentDate);
 
-
-// Reference to your select field
+    // Reference to your select field
     const selectField = $('#selectCustomerId');
 
-// Make an AJAX request to load customer IDs
+    // Make an AJAX request to load customer IDs
     $.ajax({
         url: BASE_URL + 'customer/getCustomerIds',
         method: 'GET',
@@ -56,8 +52,6 @@ $(document).ready(function () {
                     text: customerId
                 }));
             });
-            // alert('Success load Customer Ids');
-
         },
         error: function (error) {
             console.error(error);
@@ -69,7 +63,7 @@ $(document).ready(function () {
 
         // Make an AJAX GET request to fetch vehicle IDs
         $.ajax({
-            url: BASE_URL + "vehicle/getVehicleIds", // The URL of your Spring backend endpoint
+            url: BASE_URL + "vehicle/getVehicleIds",
             type: "GET",
             dataType: "json",
             success: function (data) {
@@ -82,8 +76,6 @@ $(document).ready(function () {
                     option.value = vehicleId;
                     option.text = vehicleId;
                     selectVehicleId.appendChild(option);
-                    // alert('Successfully load Vehicle Ids ');
-
                 });
             },
             error: function (error) {
@@ -92,7 +84,6 @@ $(document).ready(function () {
             },
         });
     }
-
 
     $("#selectVehicleId, #selectVehicleRateDuration").on("change", function () {
         var vehicleId = $("#selectVehicleId").val();
@@ -110,18 +101,12 @@ $(document).ready(function () {
                 if (rateDuration === "Daily") {
                     $("#txtVehicleRate").val(data.dailyRate);
                     $("#txtFreeKms").val(data.freeKmADay);
-
                 } else if (rateDuration === "Monthly") {
                     $("#txtVehicleRate").val(data.monthlyRate);
                     $("#txtFreeKms").val(data.freeKmAMonth);
-
                 }
                 $("#txtExtraKmPrice").val(data.priceExtraKm);
                 $("#txtLossDamageVawier").val(data.lossDamageVawier);
-
-
-                // alert('Successfully loaded Vehicle details');
-
             },
             error: function (error) {
                 alert('Error: ' + error.message);
@@ -129,31 +114,26 @@ $(document).ready(function () {
         });
     });
 
-// Function to get customer details by ID
-    $('#selectCustomerId').on('change', function () {
-        var selectedCustomerId = $(this).val();
+    // Function to get customer details by ID
+    function getCustomerDetailsById(customerId) {
+        $.ajax({
+            type: 'GET',
+            url: BASE_URL + 'customer/' + customerId,
+            success: function (data) {
+                // Populate fields with retrieved customer details
+                $('#txtNameInput').val(data.customerName);
+                $('#txtNicInput').val(data.nic);
+                $('#txtContactInput').val(data.customerContact);
+                $('#txtEmailInput').val(data.customerEmail);
+            },
+            error: function (error) {
+                alert('Error: ' + error.message);
+                console.error('Error:', error);
+            }
+        });
+    }
 
-        if (selectedCustomerId !== 'Select Id') {
-            $.ajax({
-                type: 'GET',
-                url: BASE_URL + 'customer/' + selectedCustomerId,
-                success: function (data) {
-                    // Populate fields with retrieved customer details
-                    $('#txtNameInput').val(data.customerName);
-                    $('#txtNicInput').val(data.nic);
-                    $('#txtContactInput').val(data.customerContact);
-                    $('#txtEmailInput').val(data.customerEmail);
-                    // alert('SuccessFully loaded Customer Data');
-                },
-                error: function (error) {
-                    alert('Error: ' + error.message);
-                    console.error('Error:', error);
-                }
-            });
-        }
-    });
-
-// Trigger the function when the customer ID is selected
+    // Trigger the function when the customer ID is selected
     $('#selectCustomerId').on('change', function () {
         var selectedCustomerId = $(this).val();
         if (selectedCustomerId) {
@@ -164,49 +144,7 @@ $(document).ready(function () {
         }
     });
 
-    // document.getElementById('booking-button').addEventListener('click', function () {
-    //     // Simulate booking and storing data in local storage
-    //     const bookingData = {
-    //         bookingId: document.querySelector("#txtBookingId").value,
-    //         takenDate: document.querySelector("#txtTakenDate").value,
-    //         returnDate: document.querySelector("#txtReturnDate").value,
-    //         takenLocation: document.querySelector("#txtTakenLocation").value,
-    //         returnLocation: document.querySelector("#txtReturnLocation").value,
-    //         vehicleId: document.querySelector("#selectVehicleId").value,
-    //         // rateDuration: document.querySelector("#selectVehicleRateDuration").value,
-    //         // vehicleRate: document.querySelector("#txtVehicleRate").value,
-    //         // freeKilometers: document.querySelector("#txtFreeKms").value,
-    //         // extraKmPrice: document.querySelector("#txtExtraKmPrice").value,
-    //         vehicleQty: document.querySelector("#txtVehicleQty").value,
-    //         isDriverNeeded: document.querySelector("input[name='driverAvailability']:checked").value,
-    //         customerId: document.querySelector("#selectCustomerId").value,
-    //         // customerNic: document.querySelector("#txtNicInput").value,
-    //         // customerName: document.querySelector("#txtNameInput").value,
-    //         // customerContact: document.querySelector("#txtContactInput").value,
-    //         customerEmail: document.querySelector("#txtEmailInput").value,
-    //         lossDamageWaiver: document.querySelector("#txtLossDamageVawier").value
-    //     };
-    //
-    //     // Check if driver is needed
-    //     if (bookingData.isDriverNeeded === "yes") {
-    //         // Simulate selecting a driver from driverTable (you should implement this)
-    //         const selectedDriverId = selectDriverFromTable();
-    //         if (selectedDriverId) {
-    //             bookingData.driverId = selectedDriverId;
-    //         } else {
-    //             // Handle the case where no driver is available
-    //             console.log("No available drivers.");
-    //             return; // Exit the function
-    //         }
-    //     }
-    //
-    //     // localStorage.setItem('bookingData', JSON.stringify(bookingData));
-    //     localStorage.setItem('bookingData', JSON.stringify(bookingDataArray));
-    //
-    //
-    //     // Redirect to the response page
-    //     window.location.href = '../pages/Booking Response Page.html'; // Replace with the actual URL
-    // });
+
     document.getElementById('booking-button').addEventListener('click', function () {
         // Assuming bookingDataArray is an array of booking data objects
         const bookingDataArray = [
@@ -218,34 +156,105 @@ $(document).ready(function () {
                 returnLocation: document.querySelector("#txtReturnLocation").value,
                 vehicleId: document.querySelector("#selectVehicleId").value,
                 vehicleQty: document.querySelector("#txtVehicleQty").value,
-                // isDriverNeeded: document.querySelector("input[name='driverAvailability']:checked").value,
                 isDriverNeeded: document.querySelector("input[name='driverAvailability']:checked").value,
                 customerId: document.querySelector("#selectCustomerId").value,
                 customerEmail: document.querySelector("#txtEmailInput").value,
-                lossDamageWaiver: document.querySelector("#txtLossDamageVawier").value
+                lossDamageWaiver: document.querySelector("#txtLossDamageVawier").value,
             }
             // Add more objects as needed for additional bookings
         ];
 
+        // Handle the case when a driver is needed
         if (bookingDataArray[0].isDriverNeeded === "yes") {
-            // Simulate selecting a driver from driverTable (you should implement this)
-            const selectedDriverId = selectDriverFromTable();
-            if (selectedDriverId) {
-                bookingDataArray[0].driverId = selectedDriverId;
-            } else {
-                // Handle the case where no driver is available
-                console.log("No available drivers.");
-                return; // Exit the function
-            }
+            selectDriverFromServer()
+                .then((selectedDriverId) => {
+                    if (selectedDriverId) {
+                        bookingDataArray[0].driverId = selectedDriverId;
+                    } else {
+                        // Handle the case where no driver is available
+                        bookingDataArray[0].driverId = "No available driver";
+                        console.log('No available driver found.');
+                    }
+
+                    // Continue with the booking
+                    performBooking(bookingDataArray);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        } else {
+            // If a driver is not needed, set the driverId column to "Not Applicable"
+            bookingDataArray[0].driverId = "Not Applicable";
+
+            // Continue with the booking
+            performBooking(bookingDataArray);
         }
+    });
+
+    function performBooking(bookingDataArray) {
         // Assuming that bookingDataArray is an array of booking data objects
         localStorage.setItem('bookingData', JSON.stringify(bookingDataArray));
 
+        // Reload the admin table after updating the driver ID
+        loadAvailableDrivers();
+
         // Redirect to the response page
         window.location.href = '../pages/Booking Response Page.html'; // Replace with the actual URL
-    });
+    }
 
-    function selectDriverFromTable() {
+    function loadAvailableDrivers() {
+        $.ajax({
+            url: BASE_URL + 'driver/available',
+            type: 'GET',
+            success: function (data) {
+                if (data && data.length > 0) {
+                    const selectedDriver = selectDriverBasedOnCriteria(data);
+                    if (selectedDriver) {
+                        // Set the selected driver's ID to the admin page booking table
+                        setDriverIdInTable(selectedDriver.driverId);
+                    } else {
+                        console.log('No valid driver found.');
+                    }
+                } else {
+                    console.log('No available drivers.');
+                }
+            },
+            error: function () {
+                console.log('Error fetching drivers');
+            }
+        });
+    }
+
+    function selectDriverBasedOnCriteria(drivers) {
+        const selectedDriver = drivers.find(driver => driver.driverStatus === 'Available');
+        return selectedDriver || null;
+    }
+
+    function setDriverIdInTable(driverId) {
+        const adminTable = document.getElementById('Booking-table');
+        if (adminTable) {
+            const tbody = adminTable.querySelector('tbody');
+            if (tbody) {
+                const firstRow = tbody.querySelector('tr:first-child');
+                if (firstRow) {
+                    const driverIdCell = firstRow.querySelector('td:nth-child(5)');
+                    if (driverIdCell) {
+                        driverIdCell.textContent = driverId;
+                    } else {
+                        console.log('No "driverId" cell found in the table.');
+                    }
+                } else {
+                    console.log('No rows found in the table.');
+                }
+            } else {
+                console.log('No tbody found in the table.');
+            }
+        } else {
+            console.log('Admin table not found.');
+        }
+    }
+
+    function selectDriverFromServer() {
         return new Promise(function (resolve, reject) {
             $.ajax({
                 url: BASE_URL + 'driver/available',
@@ -257,48 +266,23 @@ $(document).ready(function () {
                             resolve(selectedDriver.driverId);
                         } else {
                             // No valid driver found, handle it gracefully
-                            console.log("No valid driver selected");
                             reject('No valid driver selected');
                         }
                     } else {
                         // No available drivers
-                        console.log("No available drivers.");
                         reject('No available drivers');
                     }
                 },
                 error: function () {
-                    console.log("Error fetching drivers");
+                    console.log('Error fetching drivers');
                     reject('Error fetching drivers');
                 }
             });
         });
     }
 
-    // function selectDriverBasedOnCriteria(drivers) {
-    //     const availableDrivers = drivers.filter(driver => driver.isAvailable === true);
-    //
-    //     if (availableDrivers.length > 0) {
-    //         // You can implement your selection logic here
-    //         // For simplicity, we'll just return the first available driver
-    //         return availableDrivers[0];
-    //     } else {
-    //         // If no available drivers meet the criteria, return null
-    //         return null;
-    //     }
-    // }
-
-    function selectDriverBasedOnCriteria(drivers) {
-        // Find the first driver with driverStatus "Available"
-        const selectedDriver = drivers.find(driver => driver.driverStatus === "Available");
-
-        if (selectedDriver) {
-            return selectedDriver.customerId; // Return the customerId of the selected driver
-        } else {
-            return null; // Return null if no valid driver is found
-        }
-    }
-
-
+// Call the function to load available drivers when needed (e.g., on page load or button click)
+    loadAvailableDrivers();
 });
 
 

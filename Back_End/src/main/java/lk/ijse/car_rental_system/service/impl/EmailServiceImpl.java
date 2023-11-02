@@ -15,8 +15,8 @@ import javax.transaction.Transactional;
 public class EmailServiceImpl implements EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
-    @Value("${mail.sender}")
-    private String senderEmail;
+//    @Value("${mail.sender}")
+//    private String senderEmail;
 
     @Override
     public void sendPasswordResetEmail(String to, String resetToken) {
@@ -31,13 +31,12 @@ public class EmailServiceImpl implements EmailService {
         javaMailSender.send(mailMessage);
     }
 
-    public void sendEmail(String recipient, String subject, String message) {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setFrom(senderEmail);
-        mailMessage.setTo(recipient);
-        mailMessage.setSubject(subject);
-        mailMessage.setText(message);
-
-        javaMailSender.send(mailMessage);
+    @Override
+    public void sendBookingApprovalEmail(String to, String subject, String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(text);
+        javaMailSender.send(message);
     }
 }
