@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -59,4 +60,8 @@ public class BookingServiceImpl implements BookingService {
     public void updateDriverStatus(String driverId, String newStatus) {
         driverRepository.updateStatus(driverId, newStatus);
     }
+    public List<Booking> getAllBookings() {
+        return bookingRepo.findAll();
+    }
 }
+

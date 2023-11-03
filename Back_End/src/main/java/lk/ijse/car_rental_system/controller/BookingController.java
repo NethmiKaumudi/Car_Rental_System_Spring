@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/bookings")
 @CrossOrigin
@@ -64,6 +66,10 @@ public class BookingController {
             // Handle error
             return new ResponseEntity<>("Failed to update driver status", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @GetMapping("/getBookings")
+    public List<Booking> getAllBookings() {
+        return bookingService.getAllBookings();
     }
 
 }
