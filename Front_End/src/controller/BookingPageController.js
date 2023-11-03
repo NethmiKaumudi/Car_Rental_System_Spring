@@ -23,6 +23,8 @@ $(document).ready(function () {
         const newRow = `
         <tr>
             <td>${bookingData.bookingId}</td>
+                        <td>${bookingData.customerId}</td>
+
             <td>${bookingData.customerEmail}</td>
             <td>${bookingData.vehicleId}</td>
             <td>${bookingData.driverId || 'Not Applicable'}</td>
@@ -181,5 +183,6 @@ $(document).ready(function () {
             }
         });
     }
+
 
 });

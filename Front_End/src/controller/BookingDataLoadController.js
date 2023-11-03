@@ -2,6 +2,7 @@ $(document).ready(function () {
     // Define the API endpoint URL
     const BASE_URL = "http://localhost:8080/Back_End/";
 
+
     // Fetch booking data from the server
     $.ajax({
         type: 'GET',
@@ -10,13 +11,11 @@ $(document).ready(function () {
         success: function (data) {
             // Check if data is an array
             if (Array.isArray(data)) {
-                const tableBody = $('#driver-shedule-table tbody');
+                const tableBody = $('#Booking-Data-table tbody');
 
                 // Iterate through the booking data and add rows to the table
                 data.forEach(function (booking) {
-                    // Add a conditional check for the 'driverId' and exclude "not applicable"
-                    if (booking.driverId !== "Not Applicable") {
-                        const newRow = `
+                    const newRow = `
                             <tr>
                                 <td>${booking.bookingId}</td>
                                 <td>${booking.customerId}</td>
@@ -26,10 +25,12 @@ $(document).ready(function () {
                                 <td>${booking.returnLocation}</td>
                                 <td>${booking.takenDate}</td>
                                 <td>${booking.returnDate}</td>
+                                 <td>${booking.lossDamageAgreement}</td>
+                                 <td>${booking.vehicleQty}</td>
+
                             </tr>
                         `;
-                        tableBody.append(newRow);
-                    }
+                    tableBody.append(newRow);
                 });
             } else {
                 console.error('Invalid booking data received from the server.');
@@ -39,10 +40,9 @@ $(document).ready(function () {
             console.error('Error fetching booking data from the server.');
         }
     });
-
     $('#searchField').on('input', function () {
         const searchText = $(this).val().toLowerCase();
-        const rows = $('#driver-shedule-table tbody tr');
+        const rows = $('#Booking-Data-table tbody tr');
 
         rows.each(function () {
             const row = $(this);
@@ -55,4 +55,5 @@ $(document).ready(function () {
             }
         });
     });
+
 });
