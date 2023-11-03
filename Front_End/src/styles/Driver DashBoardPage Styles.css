@@ -115,3 +115,31 @@ tbody tr:hover {
     outline: none;
     border: 1px solid dodgerblue;
 }
+#logOut {
+    width: 200px;
+    height: 50px;
+    outline: none;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 15px;
+    position: absolute;
+    right: 14%;
+    top: 6.5%;
+    background: black;
+}
+
+#logOut a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+#logOut a i{
+    color: white;
+    font-size: 25px;
+    margin-top: 2px;
+}
+
+#logOut:hover {
+    background:dodgerblue;
+
+}
