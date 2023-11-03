@@ -1,11 +1,12 @@
 package lk.ijse.car_rental_system.controller;
 
-import lk.ijse.car_rental_system.dto.BookingDTO;
-import lk.ijse.car_rental_system.dto.DriverDTO;
 import lk.ijse.car_rental_system.entity.Booking;
-import lk.ijse.car_rental_system.service.*;
-import lk.ijse.car_rental_system.service.impl.BookingApprovalService;
+import lk.ijse.car_rental_system.service.BookingService;
+import lk.ijse.car_rental_system.service.DriverService;
+import lk.ijse.car_rental_system.service.VehicleService;
+import lk.ijse.car_rental_system.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,14 +20,7 @@ public class BookingController {
     VehicleService vehicleService;
     @Autowired
     private BookingService bookingService;
-    @Autowired
-    private EmailService emailService;
-    //    @Autowired
-//    private JavaMailSender emailSender;
-    @Autowired
-    private CustomerService customerService;
-    @Autowired
-    private BookingApprovalService bookingApprovalService;
+
 
     @GetMapping("/generate-next-booking-id")
     public String generateNextBookingId() {
@@ -34,36 +28,42 @@ public class BookingController {
         return nextBookingId;
     }
 
-
-    // Endpoint for sending an email
-    @PostMapping("/send-email")
-    public ResponseEntity<String> sendEmail(@RequestParam String customerEmail, @RequestBody Booking bookingData) {
-        // Send an email to the customer
-        emailService.sendBookingApprovalEmail(customerEmail, "Your booking has been approved.");
-        return ResponseEntity.ok("Email sent to customer.");
-    }
-
-    @PostMapping("/add-booking")
-    public ResponseEntity<String> addBooking(@RequestBody BookingDTO bookingData) {
-        // Add the booking data to the booking table
-        bookingService.addBooking(bookingData);
-        return ResponseEntity.ok("Booking added to the database.");
+    @PostMapping("/addBooking")
+    public ResponseUtil addBookingToDatabase(@RequestBody Booking booking) {
+        try {
+            bookingService.addBooking(booking);
+            return new ResponseUtil("Ok", "Successfully Added Booking", booking);
+        } catch (Exception e) {
+            // Handle the exception, log the error, or return an error response
+            return new ResponseUtil("Error", "Failed to add booking: " + e.getMessage(), null);
+        }
     }
 
 
-    @PutMapping("/update-vehicle-quantity")
+    @PostMapping("/updateVehicleQuantity")
     public ResponseEntity<String> updateVehicleQuantity(@RequestParam String vehicleId, @RequestParam int vehicleQty) {
-        // Update the vehicle table with the new quantity
-        vehicleService.updateVehicleQuantity(vehicleId, vehicleQty);
-        return ResponseEntity.ok("Vehicle quantity updated.");
+        try {
+            bookingService.updateVehicleQuantity(vehicleId, vehicleQty);
+
+            // Handle success
+            return new ResponseEntity<>("Vehicle quantity updated successfully", HttpStatus.OK);
+        } catch (Exception e) {
+            // Handle error
+            return new ResponseEntity<>("Failed to update vehicle quantity", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    @PutMapping("/update-driver-status")
-    public ResponseEntity<String> updateDriverStatus(@RequestParam DriverDTO dto) {
-        // Update the driver status
-        String driverId = dto.getDriverId();
-        driverService.updateDriverStatus(driverId, "BOOKED");
-        return ResponseEntity.ok("Driver status updated to BOOKED.");
+    @PostMapping("/updateDriverStatus")
+    public ResponseEntity<String> updateDriverStatus(@RequestParam String driverId, @RequestParam String status) {
+        try {
+            bookingService.updateDriverStatus(driverId, status);
+
+            // Handle success
+            return new ResponseEntity<>("Driver status updated successfully", HttpStatus.OK);
+        } catch (Exception e) {
+            // Handle error
+            return new ResponseEntity<>("Failed to update driver status", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

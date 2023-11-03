@@ -22,5 +22,5 @@ public interface VehicleService {
 
     List<VehicleDTO> sortVehicles(SortingOptions sortOption);
 
-    public void updateVehicleQuantity(String vehicleId, int newQuantity);
+//    public void updateVehicleQuantity(String vehicleId, int newQuantity);
 }

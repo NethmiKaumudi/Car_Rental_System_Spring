@@ -21,39 +21,87 @@ $(document).ready(function () {
 
     function addBookingToAdminTable(bookingData) {
         const newRow = `
-                <tr>
-                    <td>${bookingData.bookingId}</td>
-                     <td>${bookingData.customerEmail}</td>
-                      <td>${bookingData.customerEmail}</td>
-                        <td>${bookingData.vehicleId}</td>
-                         <td>${bookingData.driverId || 'Not Applicable'}</td>
-                         <td>${bookingData.takenLocation}</td>
-                         <td>${bookingData.returnLocation}</td>
-                         <td>${bookingData.takenDate}</td>
-                         <td>${bookingData.returnDate}</td>
-                         <td>${bookingData.lossDamageWaiver}</td>
-                         <td>${bookingData.vehicleQty}</td>
-                    <td>
-<button class="approve-button" 
-    data-bookingdata='${JSON.stringify(bookingData)}'
-    data-customeremail="${bookingData.customerEmail}"
-    data-bookingid="${bookingData.bookingId}">Approve</button>
-                    </td>
-                </tr>`;
+        <tr>
+            <td>${bookingData.bookingId}</td>
+            <td>${bookingData.customerEmail}</td>
+            <td>${bookingData.vehicleId}</td>
+            <td>${bookingData.driverId || 'Not Applicable'}</td>
+            <td>${bookingData.takenLocation}</td>
+            <td>${bookingData.returnLocation}</td>
+            <td>${bookingData.takenDate}</td>
+            <td>${bookingData.returnDate}</td>
+            <td>${bookingData.lossDamageWaiver}</td>
+            <td>${bookingData.vehicleQty}</td>
+            <td>
+                <button class="approve-button" 
+                    data-bookingdata='${JSON.stringify(bookingData)}'
+                    data-customeremail="${bookingData.customerEmail}"
+                    data-bookingid="${bookingData.bookingId}">Approve</button>
+            </td>
+        </tr>`;
 
         adminTableBody.append(newRow);
     }
 
-    // Handle the click event on the "Approve" button
+    // Function to handle the "Approve" button click
     adminTableBody.on('click', '.approve-button', function () {
-
-        const bookingData = $(this).data('bookingdata');
-
+        const approveButton = $(this); // Cache the button element
+        const bookingData = $(this).data('bookingdata'); // Removed JSON.parse
 
         if (bookingData) {
-            // Construct the data object with all fields
-            const dataToSend = {
-                bookingId: bookingData.bookingId,
+            const bookingId = $(this).data('bookingid');
+            const customerEmail = $(this).data('customeremail');
+
+            // Step 1: Send an email to the customer
+            sendEmailToCustomer(customerEmail);
+
+            // Step 2: Add booking to the booking table in the database
+            addBookingToDatabase(bookingId, bookingData, function () {
+                // Success callback: Change button style and disable it
+                approveButton.removeClass('approve-button').addClass('approved-button').text('Approved').prop('disabled', true);
+            });
+
+            // Step 3: Update the vehicle quantity in the vehicle table
+            updateVehicleQuantity(bookingData.vehicleId, bookingData.vehicleQty);
+
+            // Step 4: If a driver is assigned, update the driver's status
+            if (bookingData.driverId) {
+                updateDriverStatus(bookingData.driverId);
+            }
+
+            // Additional: Remove the row from the admin table (if needed)
+            $(this).closest('tr').remove();
+        } else {
+            console.error('Invalid booking data in the "data-bookingdata" attribute.');
+        }
+    });
+
+    function sendEmailToCustomer(customerEmail) {
+        // AJAX request to send an email to the customer
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + 'email/sendEmail', // Replace with your email sending endpoint
+            data: {
+                email: customerEmail,
+                message: 'Your booking has been approved.'
+            },
+            success: function () {
+                alert("Email Send to customer Sucessfully");
+            },
+            error: function () {
+                // Handle error
+            }
+        });
+    }
+
+    function addBookingToDatabase(bookingId, bookingData, successCallback) {
+        // AJAX request to add booking to the database
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + 'bookings/addBooking', // Replace with your booking endpoint
+            contentType: 'application/json', // Set the content type to JSON
+            data: JSON.stringify({
+                bookingId: bookingId,
                 customerId: bookingData.customerId,
                 vehicleId: bookingData.vehicleId,
                 driverId: bookingData.driverId,
@@ -61,76 +109,77 @@ $(document).ready(function () {
                 returnLocation: bookingData.returnLocation,
                 takenDate: bookingData.takenDate,
                 returnDate: bookingData.returnDate,
-                lossDamageAgreement: bookingData.lossDamageAgreement,
+                lossDamageAgreement: bookingData.lossDamageWaiver,
                 vehicleQty: bookingData.vehicleQty
-            };
-            $.ajax({
-                url: BASE_URL + 'bookings/send-email',
-                method: 'POST',
-                data: {
-                    customerEmail: bookingData.customerEmail,
-                    bookingData: dataToSend // Include booking data in the email request
-                },
-                success: function (response) {
-                    // Handle success (e.g., show a confirmation message)
-                },
-                error: function (error) {
-                    // Handle error (e.g., show an error message)
-                }
-            });
-            // Send an AJAX request with all fields
-            $.ajax({
-                url: BASE_URL + 'bookings/add-booking',
-                method: 'POST',
-                contentType: 'application/json', // Set the content type to JSON
-                data: JSON.stringify(dataToSend), // Convert to JSON string
-                success: function (response) {
-                    // Handle success (e.g., show a confirmation message)
-                },
-                error: function (error) {
-                    // Handle error (e.g., show an error message)
-                }
-            });
 
-            // Update the vehicle table quantity
-            $.ajax({
-                url: BASE_URL + 'bookings/update-vehicle-quantity',
-                method: 'PUT',
-                contentType: 'application/json', // Set the content type to JSON
-                data: JSON.stringify({
-                    vehicleId: bookingData.vehicleId,
-                    vehicleQty: bookingData.vehicleQty
-                }),
-                success: function (response) {
-                    // Handle success (e.g., show a confirmation message)
-                },
-                error: function (error) {
-                    // Handle error (e.g., show an error message)
+
+            }),
+            success: function () {
+                // Handle success
+                if (successCallback) {
+                    successCallback();
                 }
-            });
+                alert("Booking Added Sucessfully");
 
-            // Update the driver status (if driverId is provided)
-            if (bookingData.driverId && bookingData.driverId !== 'Not Applicable') {
-                $.ajax({
-                    url: BASE_URL + 'bookings/update-driver-status',
-                    method: 'PUT',
-                    contentType: 'application/json', // Set the content type to JSON
-                    data: JSON.stringify({
-                        driverId: bookingData.driverId
-
-                    }),
-                    success: function (response) {
-                        // Handle success (e.g., show a confirmation message)
-                    },
-                    error: function (error) {
-                        // Handle error (e.g., show an error message)
-                    }
-                });
+            },
+            error: function () {
+                // Handle error
             }
-        } else {
-            alert('Invalid booking data');
-        }
-    });
+        });
+    }
 
+    if (Array.isArray(adminBookingData)) {
+        // Loop through the booking data and add it to the admin table
+        adminBookingData.forEach(function (bookingData) {
+            // Check if bookingData is not null
+            if (bookingData) {
+                addBookingToAdminTable(bookingData);
+            }
+        });
+    } else {
+        // Handle the case where adminBookingData is not an array
+        console.error('Invalid admin booking data in local storage.');
+    }
+
+
+    function updateVehicleQuantity(vehicleId, vehicleQty) {
+        // AJAX request to update vehicle quantity in the database
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + 'bookings/updateVehicleQuantity', // Replace with your vehicle update endpoint
+            data: {
+                vehicleId: vehicleId,
+                vehicleQty: vehicleQty
+            },
+            success: function () {
+                // Handle success
+                alert("Vehicle Qty Updated Sucessfully");
+
+            },
+            error: function () {
+                // Handle error
+            }
+        });
+    }
+
+    function updateDriverStatus(driverId) {
+        // AJAX request to update driver status in the database
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + 'bookings/updateDriverStatus', // Replace with your driver update endpoint
+            data: {
+                driverId: driverId,
+                status: 'Booked'
+            },
+            success: function () {
+                // Handle success
+                alert(" Driver Status Updated Sucessfully");
+
+            },
+            error: function () {
+                // Handle error
+            }
+        });
+    }
 
 });

@@ -58,12 +58,17 @@ function signUp() {
 }
 
 $("#LoginBtn").click(function () {
-    const userName = $("#txtUserName").val();
-    const password = $("#txtPassWord").val();
+    const userName = $("#userName").val();
+    const password = $("#passWord").val();
+    console.log(userName);
+    console.log(password);
 
     const loginData = {
+        "userId": null,
         "userName": userName,
-        "password": password
+        "password": password,
+        "userRole": null,
+        "userEmail": null
     };
 
     $.ajax({
@@ -72,10 +77,12 @@ $("#LoginBtn").click(function () {
         contentType: 'application/json',
         data: JSON.stringify(loginData),
         success: function (response) {
-            if (response.status === 'Ok') {
+            console.log(response.state);
+            if (response.state === 'Ok') {
                 const userRole = response.data.userRole;
+                console.log(userRole)
                 if (userRole === 'Admin') {
-                    window.location.href = '../pages/AdminCustomerPage.html';
+                    window.location.href = '../pages/AdminDashBoardPage.html';
                 } else if (userRole === 'RegisteredCustomer') {
                     window.location.href = '../pages/RegisteredCustomerDashBoard.html';
                 } else if (userRole === 'GuestCustomer') {
@@ -89,6 +96,7 @@ $("#LoginBtn").click(function () {
                 alert('Login failed: ' + response.message);
             }
         },
+
         error: function () {
             alert('An error occurred during login');
         },

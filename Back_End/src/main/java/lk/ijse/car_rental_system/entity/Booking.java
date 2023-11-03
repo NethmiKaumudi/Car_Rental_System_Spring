@@ -18,32 +18,30 @@ public class Booking {
     @Column(name = "booking_id", columnDefinition = "VARCHAR(64)")
     private String bookingId;
 
-    @Column(name = "customer_id")
+//    @Column(name = "customer_id")
     private String customerId;
 
-//    @ElementCollection
-//    @CollectionTable(name = "booking_vehicles", joinColumns = @JoinColumn(name = "booking_id"))
-    @Column(name = "vehicle_id")
+//    @Column(name = "vehicle_id")
     private String vehicleId;
 
-    @Column(name = "driver_id")
+//    @Column(name = "driver_id")
     private String driverId; // Can be null
 
-    @Column(name = "taken_location")
+//    @Column(name = "taken_location")
     private String takenLocation;
 
-    @Column(name = "return_location")
+//    @Column(name = "return_location")
     private String returnLocation;
 
-    @Column(name = "taken_date")
+//    @Column(name = "taken_date")
     private LocalDate takenDate;
 
-    @Column(name = "return_date")
+//    @Column(name = "return_date")
     private LocalDate returnDate;
 
-    @Column(name = "loss_damage_agreement")
+//    @Column(name = "loss_damage_agreement")
     private String lossDamageAgreement;
 
-    @Column(name = "vehicle_qty")
+//    @Column(name = "vehicle_qty")
     private Integer vehicleQty;
 }

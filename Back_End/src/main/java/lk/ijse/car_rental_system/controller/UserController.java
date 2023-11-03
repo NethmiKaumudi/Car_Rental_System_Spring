@@ -46,23 +46,14 @@ public class UserController {
         String userName = userDTO.getUserName().trim(); // Trim and convert to lowercase
         String password = userService.findPasswordByUsername(userName);
         String userRole = userService.findUserRoleByUsername(userName);
-        System.out.println("Received username: " + userName);
-        System.out.println("Received password: " + userDTO.getPassword());
-        System.out.println("Fetched password from DB: " + password);
-        System.out.println("Fetched user role from DB: " + userRole);
         if (password != null && passwordEncoder.matches(userDTO.getPassword(), password)) {
-            // Password matched, proceed with userRole
-            // You can use userRole to determine which dashboard to redirect to
-            // Example: if (userRole.equals("Admin")) { ... }
-            // ...
-
             System.out.println("Password matched. User role: " + userRole);
 
             // Return a success response with user data
-            UserDTO user = new UserDTO();
-            user.setUserName(userName);
-            user.setUserRole(userRole);
-            return new ResponseUtil("Ok", "Login Successful", user);
+//            UserDTO user = new UserDTO();
+            userDTO.setUserName(userName);
+            userDTO.setUserRole(userRole);
+            return new ResponseUtil("Ok", "Login Successful", userDTO);
         } else {
             // Password didn't match or user not found
             return new ResponseUtil("Error", "Invalid credentials", null);

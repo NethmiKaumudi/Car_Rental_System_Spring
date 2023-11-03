@@ -67,11 +67,11 @@ public class DriverServiceImpl implements DriverService {
         return driverRepo.findByDriverStatus("Available");
     }
 
-    public void updateDriverStatus(String driverId, String newStatus) {
-        Driver driver = driverRepo.findByDriverId(driverId);
-        if (driver != null) {
-            driver.setDriverStatus(newStatus);
-            driverRepo.save(driver);
-        }
-    }
+//    public void updateDriverStatus(String driverId, String newStatus) {
+//        Driver driver = driverRepo.findByDriverId(driverId);
+//        if (driver != null) {
+//            driver.setDriverStatus(newStatus);
+//            driverRepo.save(driver);
+//        }
+//    }
 }

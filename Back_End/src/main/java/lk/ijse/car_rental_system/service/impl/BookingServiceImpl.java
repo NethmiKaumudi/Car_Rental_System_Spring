@@ -1,6 +1,5 @@
 package lk.ijse.car_rental_system.service.impl;
 
-import lk.ijse.car_rental_system.dto.BookingDTO;
 import lk.ijse.car_rental_system.entity.Booking;
 import lk.ijse.car_rental_system.repository.BookingRepo;
 import lk.ijse.car_rental_system.repository.DriverRepo;
@@ -30,35 +29,34 @@ public class BookingServiceImpl implements BookingService {
         Booking lastBooking = bookingRepo.findTopByOrderByBookingIdDesc();
         if (lastBooking != null) {
             String lastBookingId = lastBooking.getBookingId();
-            // Extract the numeric part and increment it
             int lastBookingNumber = Integer.parseInt(lastBookingId.substring(1));
             String nextBookingId = "B" + String.format("%03d", lastBookingNumber + 1);
             return nextBookingId;
         } else {
-            // If there are no bookings yet, start from a predefined number, e.g., B0001
+
             return "B001";
         }
     }
 
-
-    public void addBooking(BookingDTO bookingData) {
-        // Create a new Booking entity from the BookingData
-        Booking booking = new Booking();
-
-        // Map the properties from bookingData to booking entity
-        booking.setBookingId(bookingData.getBookingId());
-        booking.setCustomerId(bookingData.getCustomerId());
-        booking.setVehicleId(bookingData.getVehicleId());
-        booking.setDriverId(bookingData.getDriverId());
-        booking.setTakenLocation(bookingData.getTakenLocation());
-        booking.setReturnLocation(bookingData.getReturnLocation());
-        booking.setTakenDate(bookingData.getTakenDate());
-        booking.setReturnDate(bookingData.getReturnDate());
-        booking.setLossDamageAgreement(bookingData.getLossDamageAgreement());
-        booking.setVehicleQty(bookingData.getVehicleQty());
-
-        // Save the booking entity to the database
-        bookingRepo.save(booking);
+    public Booking addBooking(Booking booking) {
+        booking.setBookingId(booking.getBookingId());
+        booking.setCustomerId(booking.getCustomerId());
+        booking.setVehicleId(booking.getVehicleId()); // Set the vehicle ID
+        booking.setDriverId(booking.getDriverId());
+        booking.setTakenLocation(booking.getReturnLocation());
+        booking.setReturnLocation(booking.getTakenLocation());
+        booking.setTakenDate(booking.getTakenDate());
+        booking.setReturnDate(booking.getReturnDate());
+        booking.setLossDamageAgreement(booking.getLossDamageAgreement());
+        booking.setVehicleQty(booking.getVehicleQty());
+        return bookingRepo.save(booking);
     }
 
+    public void updateVehicleQuantity(String vehicleId, int newQuantity) {
+        vehicleRepository.updateQuantity(vehicleId, newQuantity);
+    }
+
+    public void updateDriverStatus(String driverId, String newStatus) {
+        driverRepository.updateStatus(driverId, newStatus);
+    }
 }

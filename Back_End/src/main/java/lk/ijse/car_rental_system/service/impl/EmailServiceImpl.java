@@ -16,6 +16,15 @@ public class EmailServiceImpl implements EmailService {
     private JavaMailSender javaMailSender;
 //    @Value("${mail.sender}")
 //    private String senderEmail;
+    //    public void sendBookingApprovalEmail(String email, String customerEmail) {
+//        SimpleMailMessage mailMessage = new SimpleMailMessage();
+//        mailMessage.setTo(customerEmail);
+//        mailMessage.setSubject("Booking Approved");
+//        mailMessage.setText("Your booking has been approved. Thank you!");
+//
+//        javaMailSender.send(mailMessage);
+//    }
+
 
     @Override
     public void sendPasswordResetEmail(String to, String resetToken) {
@@ -30,13 +39,12 @@ public class EmailServiceImpl implements EmailService {
         javaMailSender.send(mailMessage);
     }
 
-
-    public void sendBookingApprovalEmail(String email, String customerEmail) {
+    @Override
+    public void sendEmail(String to, String subject, String text) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(customerEmail);
-        mailMessage.setSubject("Booking Approved");
-        mailMessage.setText("Your booking has been approved. Thank you!");
-
+        mailMessage.setTo(to);
+        mailMessage.setSubject(subject);
+        mailMessage.setText(text);
         javaMailSender.send(mailMessage);
     }
 }
