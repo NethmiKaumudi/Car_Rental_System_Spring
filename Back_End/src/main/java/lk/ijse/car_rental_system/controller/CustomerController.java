@@ -13,15 +13,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/customer")
 @CrossOrigin
+//(origins = "http://localhost:8080/Back_End/")
 public class CustomerController {
     @Autowired
     CustomerService customerService;
 
     @PostMapping
-//    public ResponseUtil addCustomer(@RequestBody CustomerDTO dto) {
-//        customerService.addCustomer(dto);
-//        return new ResponseUtil("Ok", "Successfully Added Customer", dto);
-//    }
     public ResponseUtil addCustomer(@RequestBody CustomerDTO dto) {
         try {
             customerService.addCustomer(dto);
@@ -52,4 +49,16 @@ public class CustomerController {
     public String generateNextCustomerId() {
         return customerService.generateNextCustomerId();
     }
+
+    @GetMapping(params = {"id"})
+    public ResponseUtil findCustomer(@RequestParam String id) {
+        return new ResponseUtil("Ok", "Successfull", customerService.findCustomer(id));
+    }
+
+    @PutMapping
+    public ResponseUtil updateCustomer(@RequestBody CustomerDTO dto) {
+        customerService.updateDriver(dto);
+        return new ResponseUtil("Ok", "Successfully Updated", dto);
+    }
+
 }

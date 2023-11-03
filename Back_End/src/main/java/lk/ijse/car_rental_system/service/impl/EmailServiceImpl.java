@@ -2,7 +2,6 @@ package lk.ijse.car_rental_system.service.impl;
 
 import lk.ijse.car_rental_system.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -31,12 +30,13 @@ public class EmailServiceImpl implements EmailService {
         javaMailSender.send(mailMessage);
     }
 
-    @Override
-    public void sendBookingApprovalEmail(String to, String subject, String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(text);
-        javaMailSender.send(message);
+
+    public void sendBookingApprovalEmail(String email, String customerEmail) {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(customerEmail);
+        mailMessage.setSubject("Booking Approved");
+        mailMessage.setText("Your booking has been approved. Thank you!");
+
+        javaMailSender.send(mailMessage);
     }
 }

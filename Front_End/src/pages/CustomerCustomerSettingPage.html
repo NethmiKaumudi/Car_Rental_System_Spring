@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Customer Details Update Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
     <link rel="stylesheet" href="/assests/lib/css/normalize.css">
     <link rel="stylesheet" href="/assests/lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/CustomerBookingPageStyle.css">
-    <link rel="stylesheet" href="/styles/GuestCustomerPage.css">
+    <link rel="stylesheet" href="/styles/CustomerUpdateClassStayles.css">
     <link rel="stylesheet" href="../assests/lib/fontawesome-free-6.4.0-web/css/all.min.css">
+    <script src="../assests/lib/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <div class="sidebar">
@@ -54,50 +56,51 @@
         </ul>
     </div>
 </div>
-<div class="register-form-container">
-    <h1 class="title-customerRegister">Customer Register Form</h1>
-    <form id="register-form" action="#">
-        <div class="userDetails">
-            <div class="input-box">
-                <span class="details">Customer Id </span>
-                <Input type="text" id="customerIdInput" placeholder="Enter Id Like 'C001'">
+<div class="container">
+    <div class="register-form-container">
+        <h1 class="title-customerRegister">Customer Update Details Form</h1>
+        <form id="register-form" action="#">
+            <div class="userDetails">
+                <div class="input-box">
+                    <span class="details">Customer Id </span>
+                    <Input type="text" id="txtCustomerIdInput" placeholder="Enter Id Like 'C001'">
+                </div>
+                <div class="input-box">
+                    <span class="details">Customer Nic </span>
+                    <Input type="text" id="txtNicInput" placeholder="Enter Your Nic">
+                </div>
+                <div class="input-box">
+                    <span class="details">Customer Name </span>
+                    <Input type="text" id="txtNameInput" placeholder="Enter Your Full Name ">
+                </div>
+                <div class="input-box">
+                    <span class="details">Customer Address </span>
+                    <Input type="text" id="txtAddressInput" placeholder="Enter Your Address ">
+                </div>
+                <div class="input-box">
+                    <span class="details">Customer Contact </span>
+                    <Input type="text" id="txtContactInput" placeholder="Enter Your Contact number ">
+                </div>
+                <div class="input-box">
+                    <span class="details">Customer Driving Licence No </span>
+                    <Input type="text" id="txtLicenceNoInput" placeholder="Enter Your Driving Licence No">
+                </div>
+                <div class=" input-box">
+                    <span class="details">Customer Email</span>
+                    <Input type="email" id="txtEmailInput" placeholder="Enter Your Email Address">
+                </div>
+                <div class="button" id="btnUpdate">
+                    <input type="submit" value="Update">
+                </div>
             </div>
-            <div class="input-box">
-                <span class="details">Customer Nic </span>
-                <Input type="text" id="nicInput" placeholder="Enter Your Nic">
-            </div>
-            <div class="input-box">
-                <span class="details">Customer Name </span>
-                <Input type="text" id="nameInput" placeholder="Enter Your Full Name ">
-            </div>
-            <div class="input-box">
-                <span class="details">Customer Address </span>
-                <Input type="text" id="addressInput" placeholder="Enter Your Address ">
-            </div>
-            <div class="input-box">
-                <span class="details">Customer Contact </span>
-                <Input type="text" id="contactInput" placeholder="Enter Your Contact number ">
-            </div>
-            <div class="input-box">
-                <span class="details">Customer Driving Licence No </span>
-                <Input type="text" id="licenceNoInput" placeholder="Enter Your Driving Licence No">
-            </div>
-            <div class=" input-box">
-                <span class="details">Customer Email</span>
-                <Input type="email" id="emailInput" placeholder="Enter Your Email Address">
-            </div>
-
-            <div class=" input-box">
-                <span class="details">Upload Nic Image Or Licence Image</span>
-                <div id="showImg"></div>
-                <input type="file" id="inputField">
-            </div>
-            <div class="button" id="btnCustomerUpdate">
-                <input type="button" value="update">
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="../assests/lib/js/jquery-3.7.0.min.js"></script>
+<script src="../controller/CustomerUpdateController.js"></script>
 
 </body>
 </html>

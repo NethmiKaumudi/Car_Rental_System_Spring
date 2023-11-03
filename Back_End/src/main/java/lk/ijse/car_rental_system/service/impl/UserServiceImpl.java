@@ -42,17 +42,37 @@ public class UserServiceImpl implements UserService {
         userRepo.save(user);
     }
 
-    @Override
-    public UserDTO login(UserDTO userDTO) {
-        User user = userRepo.findByUserName(userDTO.getUserName());
-        if (user != null && passwordEncoder.matches(userDTO.getPassword(), user.getPassword())) {
-            return mapper.map(user, UserDTO.class);
-        }
-        return null;
+    //    @Override
+//    public UserDTO login(UserDTO userDTO) {
+//        User user = userRepo.findByUserName(userDTO.getUserName());
+//        if (user != null && passwordEncoder.matches(userDTO.getPassword(), user.getPassword())) {
+//            return mapper.map(user, UserDTO.class);
+//        }
+//        return null;
+//    }
+//    public UserDTO login(UserDTO userDTO) {
+//        String userName = userDTO.getUserName().trim(); // Debug log
+//        User user = userRepo.findByUserName(userName); // Debug log
+//        if (user != null && passwordEncoder.matches(userDTO.getPassword(), user.getPassword())) {
+//            return mapper.map(user, UserDTO.class);
+//        }
+//        return null;
+//    }
+//    public User findUserByUserName(String userName) {
+//        return userRepo.findByUserName(userName);
+//    }
+    public String findPasswordByUsername(String userName) {
+        return userRepo.findPasswordByUserName(userName);
     }
+
+    public String findUserRoleByUsername(String userName) {
+        return userRepo.findUserRoleByUserName(userName);
+    }
+
     public User findByEmail(String email) {
         return userRepo.findByEmail(email);
     }
+
     public boolean resetPassword(PasswordResetForm form) {
         String email = form.getEmail();
         String token = form.getToken();

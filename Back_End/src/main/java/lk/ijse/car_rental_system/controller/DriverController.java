@@ -48,4 +48,15 @@ public class DriverController {
     public List<Driver> getAvailableDrivers() {
         return driverService.findAvailableDrivers();
     }
+
+//    @PostMapping("/update-status")
+//    @ResponseBody
+//    public String updateDriverStatus(@RequestParam String driverId, @RequestParam String status) {
+//        try {
+//            driverService.updateDriverStatus(driverId, status);
+//            return "Driver status updated successfully.";
+//        } catch (Exception e) {
+//            return "Failed to update driver status: " + e.getMessage();
+//        }
+//    }
 }

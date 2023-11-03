@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    Content-Security-Policy: script-src 'self' 'unsafe-inline';
+
+}
+
+body {
+    display: flex;
+
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 7vw;
+    height: 100vh;
+    padding: 0 1.7rem;
+    color: black;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    background: linear-gradient(to top, black, #007bff);
+}
+
+.sidebar:hover {
+    width: 240px;
+    transition: 0.5s;
+}
+
+.sidebar.logo {
+    height: 80px;
+    padding: 16px;
+}
+
+.menu {
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 1rem;
+    margin: 50px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.menu li:hover, .active {
+    background: lightslategray;
+
+}
+
+.menu li a {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem
+}
+
+.menu li a:hover {
+    color: black;
+}
+
+.menu li a span {
+    overflow: hidden;
+}
+
+.menu li a i {
+    font-size: 1.2rem;
+}
+
+.logout {
+    position: absolute;
+    top: 460px;
+    left: 0px;
+    width: 100%;
+}
+
+/*cars*/
+.container {
+    max-width: 96vw;
+    margin: 0 auto;
+    /*padding: 3rem 2rem;*/
+    background: linear-gradient(135deg, dodgerblue, white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 10px;
+
+}
+
+.register-form-container {
+    max-width: 700px;
+    min-height: 600px;
+    width: 100%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 .4rem .8rem slategray;
+    border: 1px solid black;
+}
+
+.register-form-container .title-customerRegister {
+    font-size: 30px;
+    font-weight: 500;
+    position: relative;
+}
+
+.register-form-container .title-customerRegister::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(135deg, dodgerblue, black);
+}
+
+.register-form-container form .userDetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+
+}
+
+form .userDetails .input-box {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 10px);
+}
+
+.userDetails .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.userDetails .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid #1b1e21;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.userDetails .input-box input:focus,
+.userDetails .input-box input:valid {
+    border-color: black;
+}
+
+.userDetails .input-box input:hover {
+    border-color: #1E90FF;
+
+}
+
+form .button {
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+
+form .button input {
+    /*width: 100%;*/
+    width: 300px;
+    height: 45px;
+    background: #1E90FF;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    margin-left: -250px;
+    /*transition: all .2s ease;*/
+}
+
+form .button input:hover {
+    background: linear-gradient(135deg, dodgerblue, black);
+    color: white;
+    transform: scale(1);
+
+}
+
+#showImg {
+    width: 180px;
+    height: 120px;
+    border: 2px solid #1E90FF;
+}
+
+@media screen and (max-width: 584px) {
+    .register-form-container {
+        max-width: 100%;
+
+    }
+
+    .userDetails .input-box input {
+        height: 45px;
+        width: 100%;
+    }
+
+    form .userDetails .input-box {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .register-form-container form .userDetails {
+        max-height: 300px;
+        overflow-y: scroll;
+
+    }
+
+    .userDetails::-webkit-scrollbar {
+        width: 0;
+    }
+
+    form .button input {
+        width: 100%;
+        height: 45px;
+        background: #1E90FF;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1em;
+        color: white;
+        font-weight: 500;
+        margin-left: 100px;
+        /*transition: all .2s ease;*/
+    }
+
+}
+
+

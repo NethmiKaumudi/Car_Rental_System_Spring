@@ -1,10 +1,12 @@
 package lk.ijse.car_rental_system.controller;
 
-import lk.ijse.car_rental_system.service.BookingService;
+import lk.ijse.car_rental_system.dto.BookingDTO;
+import lk.ijse.car_rental_system.dto.DriverDTO;
+import lk.ijse.car_rental_system.entity.Booking;
+import lk.ijse.car_rental_system.service.*;
+import lk.ijse.car_rental_system.service.impl.BookingApprovalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,10 +14,19 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class BookingController {
     @Autowired
-    private BookingService bookingService;
-
+    DriverService driverService;
     @Autowired
-    private JavaMailSender emailSender;
+    VehicleService vehicleService;
+    @Autowired
+    private BookingService bookingService;
+    @Autowired
+    private EmailService emailService;
+    //    @Autowired
+//    private JavaMailSender emailSender;
+    @Autowired
+    private CustomerService customerService;
+    @Autowired
+    private BookingApprovalService bookingApprovalService;
 
     @GetMapping("/generate-next-booking-id")
     public String generateNextBookingId() {
@@ -23,19 +34,39 @@ public class BookingController {
         return nextBookingId;
     }
 
-//    @PostMapping("/send-booking-email")
-//    public String sendBookingEmail(@RequestBody BookingData bookingData) {
-//        // Build and send an email
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        message.setTo(bookingData.getCustomerEmail());
-//        message.setSubject("Booking Request Pending Approval");
-//        message.setText("Your booking request is pending approval. We will contact you shortly.");
-//
-//        emailSender.send(message);
-//
-//        // You can add more logic here if needed
-//
-//        return "Email sent successfully!";
-//    }
+
+    // Endpoint for sending an email
+    @PostMapping("/send-email")
+    public ResponseEntity<String> sendEmail(@RequestParam String customerEmail, @RequestBody Booking bookingData) {
+        // Send an email to the customer
+        emailService.sendBookingApprovalEmail(customerEmail, "Your booking has been approved.");
+        return ResponseEntity.ok("Email sent to customer.");
+    }
+
+    @PostMapping("/add-booking")
+    public ResponseEntity<String> addBooking(@RequestBody BookingDTO bookingData) {
+        // Add the booking data to the booking table
+        bookingService.addBooking(bookingData);
+        return ResponseEntity.ok("Booking added to the database.");
+    }
+
+
+    @PutMapping("/update-vehicle-quantity")
+    public ResponseEntity<String> updateVehicleQuantity(@RequestParam String vehicleId, @RequestParam int vehicleQty) {
+        // Update the vehicle table with the new quantity
+        vehicleService.updateVehicleQuantity(vehicleId, vehicleQty);
+        return ResponseEntity.ok("Vehicle quantity updated.");
+    }
+
+    @PutMapping("/update-driver-status")
+    public ResponseEntity<String> updateDriverStatus(@RequestParam DriverDTO dto) {
+        // Update the driver status
+        String driverId = dto.getDriverId();
+        driverService.updateDriverStatus(driverId, "BOOKED");
+        return ResponseEntity.ok("Driver status updated to BOOKED.");
+    }
 
 }
+
+
+

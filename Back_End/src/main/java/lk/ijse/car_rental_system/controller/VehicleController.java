@@ -90,4 +90,15 @@ public class VehicleController {
         }
     }
 
+//    @PostMapping("/update-quantity")
+//    @ResponseBody
+//    public String updateVehicleQuantity(@RequestParam String vehicleId, @RequestParam int quantity) {
+//        try {
+//            vehicleService.updateVehicleQuantity(vehicleId, quantity);
+//            return "Vehicle quantity updated successfully.";
+//        } catch (Exception e) {
+//            return "Failed to update vehicle quantity: " + e.getMessage();
+//        }
+//    }
+
 }

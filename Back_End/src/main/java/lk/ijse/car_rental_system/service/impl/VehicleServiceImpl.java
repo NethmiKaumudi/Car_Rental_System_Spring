@@ -156,4 +156,12 @@ public class VehicleServiceImpl implements VehicleService {
         return vehicleDTOs;
     }
 
+    public void updateVehicleQuantity(String vehicleId, int newQuantity) {
+        Vehicle vehicle = vehicleRepo.findByVehicleId(vehicleId);
+        if (vehicle != null) {
+            vehicle.setQty(newQuantity);
+            vehicleRepo.save(vehicle);
+        }
+    }
+
 }

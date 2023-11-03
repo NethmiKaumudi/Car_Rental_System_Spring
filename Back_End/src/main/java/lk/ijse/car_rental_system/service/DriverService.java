@@ -17,4 +17,6 @@ public interface DriverService {
     public void updateDriver(DriverDTO dto);
 
     public List<Driver> findAvailableDrivers();
+    public void updateDriverStatus(String driverId, String newStatus) ;
+
 }

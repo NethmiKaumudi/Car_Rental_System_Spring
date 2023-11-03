@@ -8,4 +8,6 @@ import java.util.List;
 public interface DriverRepo extends JpaRepository<Driver, String> {
     List<Driver> findByDriverStatus(String status);
 
+    Driver findByDriverId(String driverId);
+
 }

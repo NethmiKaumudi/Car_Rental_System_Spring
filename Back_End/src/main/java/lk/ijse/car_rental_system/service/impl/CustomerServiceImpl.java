@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -77,5 +78,34 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
+//    public Customer getCustomerByCustomerId(String customerId) {
+//        return customerRepo.findByCustomerId(customerId);
+//    }
+//
+//    public Customer updateCustomer(Customer customer) {
+//        return customerRepo.save(customer);
+//    }
 
+    @Override
+    public CustomerDTO findCustomer(String id) {
+        if (!customerRepo.existsById(id)) {
+            throw new RuntimeException(id + "is not exist,please check the id ..........");
+        }
+        Customer customer = customerRepo.findById(id).get();
+        return mapper.map(customer, CustomerDTO.class);
+    }
+
+    @Override
+    public void updateDriver(CustomerDTO c) {
+        if (!customerRepo.existsById(c.getCustomerId())) {
+            throw new RuntimeException(c.getCustomerId() + "is not exist,please check the id before updated");
+        }
+        Customer map = mapper.map(c, Customer.class);
+        customerRepo.save(map);
+    }
+
+    public Customer getCustomerById(String customerId) {
+        Optional<Customer> customer = customerRepo.findById(customerId);
+        return customer.orElse(null);
+    }
 }

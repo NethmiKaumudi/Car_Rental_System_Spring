@@ -19,6 +19,8 @@ public interface VehicleService {
     List<String> getVehicleIds();
 
     VehicleDTO getVehicleDetails(String vehicleId, String rateDuration);
+
     List<VehicleDTO> sortVehicles(SortingOptions sortOption);
 
+    public void updateVehicleQuantity(String vehicleId, int newQuantity);
 }

@@ -21,10 +21,10 @@ public class Booking {
     @Column(name = "customer_id")
     private String customerId;
 
-    @ElementCollection
-    @CollectionTable(name = "booking_vehicles", joinColumns = @JoinColumn(name = "booking_id"))
+//    @ElementCollection
+//    @CollectionTable(name = "booking_vehicles", joinColumns = @JoinColumn(name = "booking_id"))
     @Column(name = "vehicle_id")
-    private List<String> vehicleIds;
+    private String vehicleId;
 
     @Column(name = "driver_id")
     private String driverId; // Can be null
@@ -45,5 +45,5 @@ public class Booking {
     private String lossDamageAgreement;
 
     @Column(name = "vehicle_qty")
-    private String vehicleQty;
+    private Integer vehicleQty;
 }
