@@ -1,8 +1,6 @@
 package lk.ijse.car_rental_system.service.impl;
 
-import lk.ijse.car_rental_system.dto.PasswordResetForm;
 import lk.ijse.car_rental_system.dto.UserDTO;
-import lk.ijse.car_rental_system.entity.PassWordResetToken;
 import lk.ijse.car_rental_system.entity.User;
 import lk.ijse.car_rental_system.repository.UserRepo;
 import lk.ijse.car_rental_system.service.UserService;
@@ -73,25 +71,36 @@ public class UserServiceImpl implements UserService {
         return userRepo.findByEmail(email);
     }
 
-    public boolean resetPassword(PasswordResetForm form) {
-        String email = form.getEmail();
-        String token = form.getToken();
-        String newPassword = form.getNewPassword();
-
+    public boolean updatePassword(String email, String newPassword) {
         User user = userRepo.findByEmail(email);
 
         if (user != null) {
-            PassWordResetToken resetToken = user.getResetToken();
-
-            if (resetToken != null && resetToken.getToken().equals(token) && !resetToken.isTokenExpired()) {
-                // Update the user's password with the new one (newPassword)
-                user.setPassword(newPassword);
-                userRepo.save(user);
-                return true; // Password reset successful
-            }
+            // Set the new password and save the user to update the password
+            user.setPassword(passwordEncoder.encode(newPassword)); // Assuming you're using a password encoder
+            userRepo.save(user);
+            return true; // Password update was successful
         }
-
-        return false; // Password reset failed
+        return false; // User not found or password update failed
     }
+//    public boolean resetPassword(PasswordResetForm form) {
+//        String email = form.getEmail();
+//        String token = form.getToken();
+//        String newPassword = form.getNewPassword();
+//
+//        User user = userRepo.findByEmail(email);
+//
+//        if (user != null) {
+//            PassWordResetToken resetToken = user.getResetToken();
+//
+//            if (resetToken != null && resetToken.getToken().equals(token) && !resetToken.isTokenExpired()) {
+//                // Update the user's password with the new one (newPassword)
+//                user.setPassword(newPassword);
+//                userRepo.save(user);
+//                return true; // Password reset successful
+//            }
+//        }
+//
+//        return false; // Password reset failed
+//    }
 
 }

@@ -2,11 +2,14 @@ package lk.ijse.car_rental_system.service.impl;
 
 import lk.ijse.car_rental_system.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 @Service
 @Transactional
@@ -14,30 +17,32 @@ import javax.transaction.Transactional;
 public class EmailServiceImpl implements EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
-//    @Value("${mail.sender}")
-//    private String senderEmail;
-    //    public void sendBookingApprovalEmail(String email, String customerEmail) {
-//        SimpleMailMessage mailMessage = new SimpleMailMessage();
-//        mailMessage.setTo(customerEmail);
-//        mailMessage.setSubject("Booking Approved");
-//        mailMessage.setText("Your booking has been approved. Thank you!");
-//
-//        javaMailSender.send(mailMessage);
+    @Autowired
+    private Environment environment;
+
+    //    public void sendPasswordResetEmail(String to, String token) throws UnsupportedEncodingException {
+//        SimpleMailMessage message = new SimpleMailMessage();
+//        message.setFrom("your-email@example.com");
+//        message.setTo(to);
+//        message.setSubject("Password Reset");
+//        String resetLink = environment.getProperty("BASE_URL") + "/reset-password?token=" + URLEncoder.encode(token, "UTF-8");
+//        message.setText("To reset your password, click the following link: " + resetLink);
+//        javaMailSender.send(message);
 //    }
+    public void sendPasswordResetEmail(String to, String token) throws UnsupportedEncodingException {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("your-email@example.com");
+        message.setTo(to);
+        message.setSubject("Password Reset");
 
+        // Specify the base URL here
+        String baseUrl = "http://example.com"; // Replace with your desired base URL
 
-    @Override
-    public void sendPasswordResetEmail(String to, String resetToken) {
-        // Create a SimpleMailMessage
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(to);
-        mailMessage.setSubject("Password Reset Request");
-        mailMessage.setText("To reset your password, click the following link: "
-                + "http://yourdomain.com/reset-password?token=" + resetToken);
-
-        // Send the email
-        javaMailSender.send(mailMessage);
+        String resetLink = baseUrl + "/reset-password?token=" + URLEncoder.encode(token, "UTF-8");
+        message.setText("To reset your password, click the following link: " + resetLink);
+        javaMailSender.send(message);
     }
+
 
     @Override
     public void sendEmail(String to, String subject, String text) {

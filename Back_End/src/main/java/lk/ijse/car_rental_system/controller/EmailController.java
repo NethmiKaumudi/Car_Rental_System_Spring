@@ -2,6 +2,7 @@ package lk.ijse.car_rental_system.controller;
 
 import lk.ijse.car_rental_system.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
@@ -17,6 +18,8 @@ public class EmailController {
 
     @Autowired
     private JavaMailSender javaMailSender; // Autowire JavaMailSender to send emails
+    @Autowired
+    private Environment environment;
 
     @PostMapping("/sendEmail")
     public ResponseEntity<String> sendEmailToCustomer(@RequestParam String email, @RequestParam String message) {
@@ -37,4 +40,15 @@ public class EmailController {
             return new ResponseEntity<>("Failed to send email", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//    public void sendPasswordResetEmail(String to, String token) {
+//        SimpleMailMessage message = new SimpleMailMessage();
+//        message.setFrom("your-email@example.com");
+//        message.setTo(to);
+//        message.setSubject("Password Reset");
+//        // Include the token as a query parameter in the link
+//        String resetLink = environment.getProperty("BASE_URL") + "/reset-password?token=" + token;
+//        message.setText("To reset your password, click the following link: " + resetLink);
+//        javaMailSender.send(message);
+//    }
 }

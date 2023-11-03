@@ -21,6 +21,6 @@ public class User {
     private String password;
     private String userRole;
     private String userEmail;
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private PassWordResetToken resetToken;
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+//    private PassWordResetToken resetToken;
 }
