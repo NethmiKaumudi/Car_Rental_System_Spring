@@ -66,13 +66,13 @@ $("#LoginBtn").click(function () {
                 const userRole = response.data.userRole;
                 console.log(userRole)
                 if (userRole === 'Admin') {
-                    window.location.href = '../pages/AdminDashBoardPage.html';
+                    window.location.href = './pages/AdminDashBoardPage.html';
                 } else if (userRole === 'RegisteredCustomer') {
-                    window.location.href = '../pages/RegisteredCustomerDashBoard.html';
+                    window.location.href = './pages/RegisteredCustomerDashBoard.html';
                 } else if (userRole === 'GuestCustomer') {
-                    window.location.href = '../pages/GuestCustomerDashBoard.html';
+                    window.location.href = './pages/GuestCustomerDashBoard.html';
                 } else if (userRole === 'Driver') {
-                    window.location.href = '../pages/DriverDashBoard.html';
+                    window.location.href = './pages/DriverDashBoard.html';
                 } else {
                     alert('Invalid user role');
                 }
