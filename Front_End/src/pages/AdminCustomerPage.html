@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../assests/lib/css/normalize.css">
     <link rel="stylesheet" href="../assests/lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="../styles/AdminCustomerPage.css">
+
 </head>
 <body>
 <div class="sidebar">
@@ -21,7 +22,7 @@
                     </i>
                     <span>DashBoard</span></a>
             </li>
-            <li >
+            <li>
                 <a href="../pages/AdminCustomerApprovedPage.html">
                     <i>
                         <ion-icon name="checkmark-done-outline"></ion-icon>
@@ -50,7 +51,7 @@
                     </i>
                     <span>Vehicle</span></a>
             </li>
-            <li >
+            <li>
                 <a href="../pages/AdminVehicleLoadPage.html">
                     <i>
                         <ion-icon name="card-outline"></ion-icon>
@@ -88,6 +89,8 @@
     <section class="table">
         <section class="table-header">
             <h1>Customer Table</h1>
+            <input id="searchField" type="search" placeholder="Input Customer Details">
+
         </section>
         <section class="table-body">
             <table id="customer-table">
@@ -114,6 +117,6 @@
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="../assests/lib/js/jquery-3.7.0.min.js"></script>
-<script src="../controller/CustomerApprovetSetData.js"></script>
+<script src="../controller/CustomerLoadController.js"></script>
 </body>
 </html>

@@ -3,7 +3,6 @@ $(document).ready(function () {
     console.log("Document ready!");
     loadVehicleIds();
 
-    // Function to generate the next booking ID and populate it in the input field
     function generateNextBookingId() {
         console.log("Generating the next booking ID...");
         $.ajax({
@@ -19,33 +18,25 @@ $(document).ready(function () {
         });
     }
 
-    // Call the function to generate the next booking ID when the page loads
     generateNextBookingId();
 
-    // Get the current date in the format "YYYY-MM-DD"
     var currentDate = new Date().toISOString().split('T')[0];
 
-    // Set the value of the "Taken Date" input field to the current date
     $('#txtTakenDate').val(currentDate);
 
-    // Reference to your select field
     const selectField = $('#selectCustomerId');
 
-    // Make an AJAX request to load customer IDs
     $.ajax({
         url: BASE_URL + 'customer/getCustomerIds',
         method: 'GET',
         success: function (customerIds) {
-            // Clear existing options in the select field
             selectField.empty();
 
-            // Add a default option
             selectField.append($('<option>', {
                 value: '',
                 text: 'Select ID'
             }));
 
-            // Add each customer ID as an option in the select field
             customerIds.forEach(function (customerId) {
                 selectField.append($('<option>', {
                     value: customerId,
@@ -61,16 +52,13 @@ $(document).ready(function () {
     function loadVehicleIds() {
         const selectVehicleId = document.getElementById("selectVehicleId");
 
-        // Make an AJAX GET request to fetch vehicle IDs
         $.ajax({
             url: BASE_URL + "vehicle/getVehicleIds",
             type: "GET",
             dataType: "json",
             success: function (data) {
-                // Clear the select field
                 selectVehicleId.innerHTML = "";
 
-                // Add options for each vehicle ID
                 data.forEach(function (vehicleId) {
                     const option = document.createElement("option");
                     option.value = vehicleId;
@@ -97,7 +85,6 @@ $(document).ready(function () {
                 rateDuration: rateDuration,
             },
             success: function (data) {
-                // Update the form fields with the received data
                 if (rateDuration === "Daily") {
                     $("#txtVehicleRate").val(data.dailyRate);
                     $("#txtFreeKms").val(data.freeKmADay);
@@ -114,7 +101,6 @@ $(document).ready(function () {
         });
     });
 
-    // Function to get customer details by ID
     function getCustomerDetailsById(customerId) {
         $.ajax({
             type: 'GET',
@@ -133,13 +119,11 @@ $(document).ready(function () {
         });
     }
 
-    // Trigger the function when the customer ID is selected
     $('#selectCustomerId').on('change', function () {
         var selectedCustomerId = $(this).val();
         if (selectedCustomerId) {
             getCustomerDetailsById(selectedCustomerId);
         } else {
-            // Clear text fields if no customer is selected
             $('#txtNicInput, #txtNameInput, #txtContactInput, #txtEmailInput').val('');
         }
     });
@@ -161,45 +145,36 @@ $(document).ready(function () {
                 customerEmail: document.querySelector("#txtEmailInput").value,
                 lossDamageWaiver: document.querySelector("#txtLossDamageVawier").value,
             }
-            // Add more objects as needed for additional bookings
         ];
 
-        // Handle the case when a driver is needed
         if (bookingDataArray[0].isDriverNeeded === "yes") {
             selectDriverFromServer()
                 .then((selectedDriverId) => {
                     if (selectedDriverId) {
                         bookingDataArray[0].driverId = selectedDriverId;
                     } else {
-                        // Handle the case where no driver is available
                         bookingDataArray[0].driverId = "No available driver";
                         console.log('No available driver found.');
                     }
 
-                    // Continue with the booking
                     performBooking(bookingDataArray);
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         } else {
-            // If a driver is not needed, set the driverId column to "Not Applicable"
             bookingDataArray[0].driverId = "Not Applicable";
 
-            // Continue with the booking
             performBooking(bookingDataArray);
         }
     });
 
     function performBooking(bookingDataArray) {
-        // Assuming that bookingDataArray is an array of booking data objects
         localStorage.setItem('bookingData', JSON.stringify(bookingDataArray));
 
-        // Reload the admin table after updating the driver ID
         loadAvailableDrivers();
 
-        // Redirect to the response page
-        window.location.href = '../pages/Booking Response Page.html'; // Replace with the actual URL
+        window.location.href = '../pages/Booking Response Page.html';
     }
 
     function loadAvailableDrivers() {
@@ -210,7 +185,6 @@ $(document).ready(function () {
                 if (data && data.length > 0) {
                     const selectedDriver = selectDriverBasedOnCriteria(data);
                     if (selectedDriver) {
-                        // Set the selected driver's ID to the admin page booking table
                         setDriverIdInTable(selectedDriver.driverId);
                     } else {
                         console.log('No valid driver found.');
@@ -265,11 +239,9 @@ $(document).ready(function () {
                         if (selectedDriver && selectedDriver.driverId) {
                             resolve(selectedDriver.driverId);
                         } else {
-                            // No valid driver found, handle it gracefully
                             reject('No valid driver selected');
                         }
                     } else {
-                        // No available drivers
                         reject('No available drivers');
                     }
                 },
@@ -280,8 +252,6 @@ $(document).ready(function () {
             });
         });
     }
-
-// Call the function to load available drivers when needed (e.g., on page load or button click)
     loadAvailableDrivers();
 });
 

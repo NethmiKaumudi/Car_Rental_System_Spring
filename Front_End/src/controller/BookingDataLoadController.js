@@ -1,13 +1,11 @@
 $(document).ready(function () {
-    // Define the API endpoint URL
     const BASE_URL = "http://localhost:8080/Back_End/";
 
 
-    // Fetch booking data from the server
     $.ajax({
         type: 'GET',
         url: BASE_URL + 'bookings/getBookings',
-        dataType: 'json', // Specify that the response is in JSON format
+        dataType: 'json', 
         success: function (data) {
             // Check if data is an array
             if (Array.isArray(data)) {

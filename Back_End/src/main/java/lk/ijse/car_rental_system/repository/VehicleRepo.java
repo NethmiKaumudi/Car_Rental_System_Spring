@@ -10,7 +10,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface VehicleRepo extends JpaRepository<Vehicle, String> {
-    // Custom query to retrieve vehicle IDs only
     @Query("SELECT v.vehicleId FROM Vehicle v")
     List<String> findVehicleIdsOnly();
 

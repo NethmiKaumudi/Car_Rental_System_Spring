@@ -17,7 +17,7 @@ public class EmailController {
     private EmailService emailService;
 
     @Autowired
-    private JavaMailSender javaMailSender; // Autowire JavaMailSender to send emails
+    private JavaMailSender javaMailSender;
     @Autowired
     private Environment environment;
 
@@ -26,29 +26,16 @@ public class EmailController {
         try {
             // Create a SimpleMailMessage
             SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setTo(email); // Set the recipient's email address
-            mailMessage.setSubject("Booking Approval"); // Set the email subject
-            mailMessage.setText(message); // Set the email message
+            mailMessage.setTo(email);
+            mailMessage.setSubject("Booking Approval");
+            mailMessage.setText(message);
 
-            // Send the email using JavaMailSender
             javaMailSender.send(mailMessage);
 
-            // Handle success
             return new ResponseEntity<>("Email sent successfully", HttpStatus.OK);
         } catch (Exception e) {
-            // Handle error
             return new ResponseEntity<>("Failed to send email", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-//    public void sendPasswordResetEmail(String to, String token) {
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        message.setFrom("your-email@example.com");
-//        message.setTo(to);
-//        message.setSubject("Password Reset");
-//        // Include the token as a query parameter in the link
-//        String resetLink = environment.getProperty("BASE_URL") + "/reset-password?token=" + token;
-//        message.setText("To reset your password, click the following link: " + resetLink);
-//        javaMailSender.send(message);
-//    }
 }

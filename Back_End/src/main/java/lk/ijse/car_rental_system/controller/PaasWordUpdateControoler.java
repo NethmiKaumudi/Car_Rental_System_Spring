@@ -24,13 +24,12 @@ public class PaasWordUpdateControoler {
             boolean passwordUpdated = userService.updatePassword(email, newPassword);
 
             if (passwordUpdated) {
-                return "redirect:/login"; // Redirect to the login page after a successful password update
+                // Redirect to the login page after a successful password update
+                return "redirect:/login";
             } else {
-                // Handle password update failure, e.g., display an error message
                 return "password-update-failure";
             }
         } else {
-            // Handle invalid tokens, e.g., show an error page or a message
             return "invalid-token";
         }
     }

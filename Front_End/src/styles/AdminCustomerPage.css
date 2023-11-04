@@ -30,6 +30,7 @@
     height: 80px;
     padding: 10px;
 }
+
 .menu li {
     padding: 0.8rem;
     margin: 16px 0;
@@ -72,6 +73,7 @@
     left: 0px;
     width: 100%;
 }
+
 /*....................................*/
 
 td img {
@@ -174,8 +176,42 @@ tbody tr:hover {
 
 }
 
-/*.approve-button {*/
-/*    background-color: #007bff;*/
-/*    color: white;*/
 /*    pointer-events: none;*/
 /*}*/
+#searchField {
+    width: 300px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    position: absolute;
+    top: 5%;
+    left: 70%;
+}
+
+#searchField::placeholder {
+    color: #999;
+}
+
+#searchField:focus {
+    outline: none;
+    border: 1px solid dodgerblue;
+}
+
+.delete-link {
+    background-color: Red;
+    color: black;
+    padding: 5px 10px; /* Adjust padding as needed */
+    border: none;
+    cursor: pointer;
+    width: 100%; /* Make the button fill the column width */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    text-align: center;
+    border-radius: 10px;
+}
+
+.delete-link :hover {
+    background-color: darkred;
+    color: white;
+}

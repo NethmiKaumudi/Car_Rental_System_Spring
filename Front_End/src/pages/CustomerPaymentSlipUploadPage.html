@@ -6,22 +6,70 @@
     <link rel="stylesheet" href="../styles/CustomerPaymentSlipUploadPageStyles.css">
 </head>
 <body>
-<form>
-    <div class="frame">
-        <div class="center">
-            <div class="title">
-                <h1>Drop file to upload bank slip</h1>
-            </div>
+<div class="sidebar">
+    <div class="logo">
+        <ul class="menu">
+            <li>
+                <a href="../pages/RegisteredCustomerDashBoard.html">
+                    <i>
+                        <ion-icon name="car-outline"></ion-icon>
+                    </i>
+                    <span>Cars</span></a>
+            </li>
+            <li>
+                <a href="../pages/CustomerCustomerSettingPage.html">
+                    <i>
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </i>
+                    <span>Customer</span></a>
+            </li>
+            <li>
+                <a href="../pages/CustomerBookingPage.html">
+                    <i>
+                        <ion-icon name="bookmarks-outline"></ion-icon>
+                    </i>
+                    <span>Booking</span></a>
+            </li>
+            <li class="active">
+                <a href="../pages/CustomerPaymentSlipUploadPage.html">
+                    <i>
+                        <ion-icon name="card-outline"></ion-icon>
+                    </i>
+                    <span>Payment</span></a>
+            </li>
 
-            <div class="dropzone">
-                <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon"/>
-                <input type="file" class="upload-input"/>
-            </div>
+            <li class="/logout">
+                <a href="../index.html">
+                    <i>
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </i>
+                    <span>LogOut</span></a>
+            </li>
 
-            <button type="button" class="btn" name="uploadbutton">Upload file</button>
-
-        </div>
+        </ul>
     </div>
-</form>
+</div>
+<div class="container">
+    <form>
+        <div class="frame">
+            <div class="center">
+                <div class="title">
+                    <h1>Drop file to upload bank slip</h1>
+                </div>
+
+                <div class="dropzone">
+                    <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon"/>
+                    <input type="file" class="upload-input"/>
+                </div>
+
+                <button type="button" class="btn" name="uploadbutton">Upload file</button>
+
+            </div>
+        </div>
+    </form>
+</div>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="../assests/lib/js/jquery-3.7.0.min.js"></script>
 </body>
 </html>

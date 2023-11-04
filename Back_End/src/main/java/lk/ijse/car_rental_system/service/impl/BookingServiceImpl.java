@@ -23,7 +23,7 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     DriverRepo driverRepository;
     @Autowired
-    VehicleRepo vehicleRepository; // Inject the VehicleRepository
+    VehicleRepo vehicleRepository;
 
     @Override
     public String generateNextBookingId() {
@@ -42,7 +42,7 @@ public class BookingServiceImpl implements BookingService {
     public Booking addBooking(Booking booking) {
         booking.setBookingId(booking.getBookingId());
         booking.setCustomerId(booking.getCustomerId());
-        booking.setVehicleId(booking.getVehicleId()); // Set the vehicle ID
+        booking.setVehicleId(booking.getVehicleId());
         booking.setDriverId(booking.getDriverId());
         booking.setTakenLocation(booking.getReturnLocation());
         booking.setReturnLocation(booking.getTakenLocation());

@@ -1,6 +1,7 @@
 package lk.ijse.car_rental_system.controller;
 
 import lk.ijse.car_rental_system.dto.CustomerDTO;
+import lk.ijse.car_rental_system.entity.Customer;
 import lk.ijse.car_rental_system.service.CustomerService;
 import lk.ijse.car_rental_system.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/customer")
 @CrossOrigin
-//(origins = "http://localhost:8080/Back_End/")
 public class CustomerController {
     @Autowired
     CustomerService customerService;
@@ -24,7 +24,6 @@ public class CustomerController {
             customerService.addCustomer(dto);
             return new ResponseUtil("Ok", "Successfully Added Customer", dto);
         } catch (Exception e) {
-            // Handle the exception, log the error, or return an error response
             return new ResponseUtil("Error", "Failed to add customer: " + e.getMessage(), null);
         }
     }
@@ -61,4 +60,14 @@ public class CustomerController {
         return new ResponseUtil("Ok", "Successfully Updated", dto);
     }
 
+    @GetMapping("/getAllCustomers")
+    public List<Customer> getAllCustomers() {
+        return customerService.getAllCustomers();
+    }
+
+    @DeleteMapping("/deleteCustomer/{customerId}")
+    public ResponseEntity<String> deleteCustomer(@PathVariable String customerId) {
+        customerService.deleteCustomer(customerId);
+        return ResponseEntity.ok("Customer deleted successfully");
+    }
 }

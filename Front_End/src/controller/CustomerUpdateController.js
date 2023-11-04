@@ -14,34 +14,11 @@ $(document).ready(function () {
         $.ajax({
             url: BASE_URL + 'customer?id=' + customerId,
             method: 'GET',
-            // dataType: "json",
-            // success: function (response) {
-            //     console.log("Received response from backend:", response);
-            //
-            //     let customers = response.data;
-            //     if (customers.length > 0) {
-            //         let cus = customers.find(cus => cus.customerId === customerId);
-            //         if (cus) {
-            //             console.log("Customer data to populate:", cus);
-            //             $("#txtNicInput").val(cus.nic);
-            //             $("#txtNameInput").val(cus.customerName);
-            //             $("#txtAddressInput").val(cus.customerAddress);
-            //             $("#txtContactInput").val(cus.customerContact);
-            //             $("#txtLicenceNoInput").val(cus.customerLicenceNo);
-            //             $("#txtEmailInput").val(cus.customerEmail);
-            //             // ... (rest of the code)
-            //         } else {
-            //             // ... (rest of the code)
-            //         }
-            //     }
-            // },
+
             success: function (response) {
                 console.log("Received response from backend:", response);
 
-                // Access the data property
                 let customerData = response.data;
-
-                // Populate the input fields with customer data
                 $("#txtNicInput").val(customerData.nic);
                 $("#txtNameInput").val(customerData.customerName);
                 $("#txtAddressInput").val(customerData.customerAddress);
@@ -67,7 +44,6 @@ $(document).ready(function () {
         let customerEmail = $('#txtEmailInput').val();
 
 
-        // Create an object with the updated data
         let updateCustomerData = {
             customerId: customerId,
             nic: nic,
@@ -79,7 +55,6 @@ $(document).ready(function () {
 
         };
 
-        // Send an AJAX request to update the driver
         $.ajax({
             url: BASE_URL + 'customer',
             method: 'PUT',
@@ -87,7 +62,6 @@ $(document).ready(function () {
             data: JSON.stringify(updateCustomerData),
             success: function (resp) {
                 alert(resp.message);
-                // updateDriverRow(updateCustomerData); // Update the row in the table
                 clearCustomerInputFields();
             },
             error: function (error) {

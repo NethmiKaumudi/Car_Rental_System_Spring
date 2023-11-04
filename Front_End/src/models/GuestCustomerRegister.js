@@ -8,15 +8,11 @@ $('#inputField').change(function() {
         reader.onload = function(e) {
             var img = new Image();
             img.src = e.target.result;
-
-            // // Apply CSS styles to make the image fit the div
-            // img.style.maxWidth = '100%';
-            // img.style.maxHeight = '100%';
             img.style.width = '170px';
             img.style.height = '120px';
 
 
-            showImg.innerHTML = ''; // Clear any previous image
+            showImg.innerHTML = '';
             showImg.appendChild(img);
         };
 
@@ -27,8 +23,6 @@ $('#inputField').change(function() {
 $(document).ready(function () {
     $('#register-form').submit(function (event) {
         event.preventDefault();
-
-        // Capture form data
         var customerId = $('#customerIdInput').val();
         var nic = $('#nicInput').val();
         var name = $('#nameInput').val();

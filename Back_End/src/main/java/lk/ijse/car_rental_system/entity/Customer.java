@@ -24,9 +24,9 @@ public class Customer {
     private String customerContact;
     private String customerLicenceNo;
     private String customerEmail;
-    //    private String imagePath; // Store the file path or identifier
+    //    private String imagePath; /
     @Lob // Use this annotation to store large binary data (e.g., images)
-    private byte[] image; // This field will store the image data
+    private byte[] image;
 
 
 }

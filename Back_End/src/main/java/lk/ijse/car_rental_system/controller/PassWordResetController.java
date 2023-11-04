@@ -24,7 +24,7 @@ public class PassWordResetController {
         String token = tokenService.generateUniqueToken();
         tokenService.storeToken(email, token);
 
-        // Send the password reset email
+
         emailService.sendPasswordResetEmail(email, token);
 
         return ResponseEntity.ok("Password reset email sent to your email address.");

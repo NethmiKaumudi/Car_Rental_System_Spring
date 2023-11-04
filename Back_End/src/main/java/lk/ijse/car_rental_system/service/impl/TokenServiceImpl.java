@@ -12,8 +12,7 @@ import java.util.UUID;
 @Transactional
 public class TokenServiceImpl  implements TokenService {
 
-    private Map<String, String> tokens = new HashMap<>(); // You can replace this with a more persistent storage, like a database
-
+    private Map<String, String> tokens = new HashMap<>();
     public void storeToken(String email, String token) {
         tokens.put(email, token);
     }
@@ -24,7 +23,7 @@ public class TokenServiceImpl  implements TokenService {
                 return entry.getKey();
             }
         }
-        return null; // Token not found
+        return null;
     }
 
     public String generateUniqueToken() {

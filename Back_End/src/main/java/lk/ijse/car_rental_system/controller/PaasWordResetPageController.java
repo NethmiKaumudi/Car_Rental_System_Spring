@@ -10,7 +10,7 @@ import java.util.Map;
 @RequestMapping("/updatePassword")
 @CrossOrigin
 public class PaasWordResetPageController {
-    private Map<String, Date> validTokens = new HashMap<>(); // Simulated token storage
+    private Map<String, Date> validTokens = new HashMap<>();
 
     @GetMapping("/reset-password-link")
     public String resetPasswordPage(@RequestParam String token) {

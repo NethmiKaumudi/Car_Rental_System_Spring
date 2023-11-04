@@ -36,7 +36,6 @@ public class BookingController {
             bookingService.addBooking(booking);
             return new ResponseUtil("Ok", "Successfully Added Booking", booking);
         } catch (Exception e) {
-            // Handle the exception, log the error, or return an error response
             return new ResponseUtil("Error", "Failed to add booking: " + e.getMessage(), null);
         }
     }
@@ -47,10 +46,8 @@ public class BookingController {
         try {
             bookingService.updateVehicleQuantity(vehicleId, vehicleQty);
 
-            // Handle success
             return new ResponseEntity<>("Vehicle quantity updated successfully", HttpStatus.OK);
         } catch (Exception e) {
-            // Handle error
             return new ResponseEntity<>("Failed to update vehicle quantity", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -60,13 +57,12 @@ public class BookingController {
         try {
             bookingService.updateDriverStatus(driverId, status);
 
-            // Handle success
             return new ResponseEntity<>("Driver status updated successfully", HttpStatus.OK);
         } catch (Exception e) {
-            // Handle error
             return new ResponseEntity<>("Failed to update driver status", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @GetMapping("/getBookings")
     public List<Booking> getAllBookings() {
         return bookingService.getAllBookings();

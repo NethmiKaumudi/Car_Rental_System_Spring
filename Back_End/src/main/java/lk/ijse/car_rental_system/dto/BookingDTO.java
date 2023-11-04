@@ -13,8 +13,8 @@ import java.time.LocalDate;
 public class BookingDTO {
     private String bookingId;
     private String customerId;
-    private String vehicleId; // List of vehicle IDs
-    private String driverId; // Optional
+    private String vehicleId;
+    private String driverId;
     private String takenLocation;
     private String returnLocation;
     private LocalDate takenDate;

@@ -36,18 +36,15 @@ $(document).ready(function () {
             image: encodeImageToBase64(row.find('img')[0])
         };
 
-        // Send an AJAX request to your backend to add data to the database
         $.ajax({
             type: 'POST',
             url: BASE_URL + 'customer',
-            contentType: 'application/json', // Set the content type to JSON
-            data: JSON.stringify(customerData), // Convert customerData to JSON
+            contentType: 'application/json',
+            data: JSON.stringify(customerData),
             success: function (data) {
                 console.log(data);
-                // Data successfully approved and inserted into the database
                 console.log('Customer data approved and added:', data);
 
-                // Update the button appearance
                 row.find('.approve-button').text('Approved').css('background-color', 'blue').prop('disabled', true);
             },
             error: function (error) {
@@ -64,7 +61,7 @@ $(document).ready(function () {
         ctx.drawImage(imageElement, 0, 0, imageElement.width, imageElement.height);
 
         // Convert the image to Base64
-        return canvas.toDataURL("image/jpeg"); // You can change the format as needed
+        return canvas.toDataURL("image/jpeg");
     }
 
 });

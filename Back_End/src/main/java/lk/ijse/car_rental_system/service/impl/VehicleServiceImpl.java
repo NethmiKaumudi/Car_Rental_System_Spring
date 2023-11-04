@@ -76,7 +76,7 @@ public class VehicleServiceImpl implements VehicleService {
         Vehicle vehicle = vehicleRepo.findByVehicleId(vehicleId);
 
         if (vehicle == null) {
-            return null; // Handle the case where the vehicle is not found
+            return null;
         }
 
         VehicleDTO vehicleDTO = new VehicleDTO();
@@ -120,7 +120,6 @@ public class VehicleServiceImpl implements VehicleService {
                 sort = Sort.by(Sort.Order.asc("qty"));
                 break;
             default:
-                // Handle other cases, perhaps sorting by a default criterion
                 sort = Sort.by(Sort.Order.asc("defaultSortField"));
         }
 
@@ -155,13 +154,6 @@ public class VehicleServiceImpl implements VehicleService {
 
         return vehicleDTOs;
     }
-//
-//    public void updateVehicleQuantity(String vehicleId, int newQuantity) {
-//        Vehicle vehicle = vehicleRepo.findByVehicleId(vehicleId);
-//        if (vehicle != null) {
-//            vehicle.setQty(newQuantity);
-//            vehicleRepo.save(vehicle);
-//        }
-//    }
+
 
 }

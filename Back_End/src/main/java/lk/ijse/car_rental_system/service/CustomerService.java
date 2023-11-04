@@ -20,5 +20,10 @@ public interface CustomerService {
     CustomerDTO findCustomer(String id);
 
     void updateDriver(CustomerDTO c);
-    public Customer getCustomerById(String customerId) ;
+
+    public Customer getCustomerById(String customerId);
+
+    public List<Customer> getAllCustomers();
+
+    public void deleteCustomer(String customerId);
 }

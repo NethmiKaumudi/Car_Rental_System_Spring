@@ -3,22 +3,6 @@ const BASE_URL = "http://localhost:8080/Back_End/";
 $("#SignUpBtn").click(function () {
     signUp();
 });
-// $("#LoginBtn").click(function () {
-//     login();
-// });
-// $("#LoginBtn").click(function () {
-//     // Add the JSON data for login
-//     const username = $("#txtUserName").val();
-//     const password = $("#txtPassWord").val();
-//
-//     // Create a login data object with the input values
-//     const loginData = {
-//         "userName": username,
-//         "password": password
-//     };
-//
-//     login(loginData);
-// });
 
 function signUp() {
     const userId = document.getElementById('txtUserId').value;
@@ -93,7 +77,7 @@ $("#LoginBtn").click(function () {
                     alert('Invalid user role');
                 }
             } else {
-                alert('Login failed: ' + response.message);
+                alert('Login failed: ');
             }
         },
 

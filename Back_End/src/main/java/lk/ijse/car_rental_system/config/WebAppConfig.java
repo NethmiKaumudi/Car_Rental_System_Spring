@@ -27,19 +27,6 @@ public class WebAppConfig implements WebMvcConfigurer {
         multipartResolver.setMaxUploadSize(5000000);
         return multipartResolver;
     }
-
-    //    @Bean
-//    public ViewResolver viewResolver() {
-//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//        resolver.setPrefix("/index");
-//        resolver.setSuffix(".html");
-//        return resolver;
-//    }
-//
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/**").addResourceLocations("/");
-//    }
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -52,11 +39,6 @@ public class WebAppConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/assets/");
     }
-//    @Override
-//    public void addCorsMappings(CorsRegistry registry) {
-//        registry.addMapping("/**")
-//                .allowedOrigins("http://localhost:8080/Back_End/") // Replace with your frontend URL
-//                .allowedMethods("GET", "POST", "PUT", "DELETE");
-//    }
+
 
 }

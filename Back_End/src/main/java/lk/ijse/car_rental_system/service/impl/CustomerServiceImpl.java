@@ -26,7 +26,8 @@ public class CustomerServiceImpl implements CustomerService {
     public void addCustomer(CustomerDTO customerDTO) {
         try {
             Customer customer = mapper.map(customerDTO, Customer.class);
-            customer.setImage(decodeBase64ToImage(customerDTO.getImage())); // Decode and set the image
+            // Decode and set the image
+            customer.setImage(decodeBase64ToImage(customerDTO.getImage()));
             customer = customerRepo.save(customer);
         } catch (Exception e) {
             throw new RuntimeException("Error adding customer: " + e.getMessage());
@@ -61,7 +62,7 @@ public class CustomerServiceImpl implements CustomerService {
             return customerDTO;
         }
 
-        return null; // Customer not found
+        return null;
     }
 
     @Override
@@ -73,18 +74,10 @@ public class CustomerServiceImpl implements CustomerService {
             String nextCustomeriD = "C" + String.format("%03d", lastCustomerNo + 1);
             return nextCustomeriD;
         } else {
-            // If there are no bookings yet, start from a predefined number, e.g., B0001
             return "C001";
         }
     }
 
-//    public Customer getCustomerByCustomerId(String customerId) {
-//        return customerRepo.findByCustomerId(customerId);
-//    }
-//
-//    public Customer updateCustomer(Customer customer) {
-//        return customerRepo.save(customer);
-//    }
 
     @Override
     public CustomerDTO findCustomer(String id) {
@@ -107,5 +100,13 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer getCustomerById(String customerId) {
         Optional<Customer> customer = customerRepo.findById(customerId);
         return customer.orElse(null);
+    }
+
+    public List<Customer> getAllCustomers() {
+        return customerRepo.findAll();
+    }
+
+    public void deleteCustomer(String customerId) {
+        customerRepo.deleteById(customerId);
     }
 }

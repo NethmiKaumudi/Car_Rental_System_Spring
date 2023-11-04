@@ -22,21 +22,6 @@ $(document).ready(function () {
 
         };
 
-        // Handle optional fields
-        // const freeKmADay = $('#txtFreeKmADay').val().trim();
-        // if (freeKmADay) {
-        //     vehicleData["freeKmForADay"] = freeKmADay;
-        // }
-        //
-        // const freeKmAMonth = $('#txtFreeKmAMonth').val().trim();
-        // if (freeKmAMonth) {
-        //     vehicleData["freeKmForAMonth"] = freeKmAMonth;
-        // }
-        //
-        // const priceExtraKm = $('#txtPriceExtraKm').val().trim();
-        // if (priceExtraKm) {
-        //     vehicleData["priceForExtraKm"] = priceExtraKm;
-        // }
 
         $.ajax({
             url: BASE_URL + 'vehicle',
@@ -116,7 +101,6 @@ $(document).ready(function () {
     });
 
     function clearVehicleInputFields() {
-        // Clear all vehicle input fields except for #txtVehicleId
         $('#txtVehicleId,#txtRegNo, #txtVehicleBrand, #txtVehicleColour, #txtVehicleType, ' +
             '#txtNoOfPassengers, #txtDailyRate, #txtFreeKmADay, #txtMonthlyRate, ' +
             '#txtFreeKmAMonth, #txtPriceExtraKm, #txtFuelType, #txtTransmissionType, ' +
@@ -124,7 +108,6 @@ $(document).ready(function () {
         $("#txtVehicleId").focus();
     }
 
-    // Function to populate the table with vehicle data
     function populateTable() {
         $.ajax({
             url: BASE_URL + 'vehicle',
@@ -133,7 +116,7 @@ $(document).ready(function () {
                 let vehicles = response.data;
                 let tableBody = $("#vehicle-table tbody");
 
-                tableBody.empty(); // Clear existing data
+                tableBody.empty();
 
                 for (let vehicle of vehicles) {
                     let row = `
@@ -153,7 +136,7 @@ $(document).ready(function () {
                         <td>${vehicle.transmissionType}</td>
                         <td>${vehicle.distanceDriven}</td>
                         <td>${vehicle.qty}</td>
-                        <td>${vehicle.lossDamageVawier}</td> <!-- Include this field -->
+                        <td>${vehicle.lossDamageVawier}</td> 
                     </tr>
                 `;
                     tableBody.append(row);
@@ -165,9 +148,9 @@ $(document).ready(function () {
         });
     }
 
-    populateTable(); // Load data when the page loads
+    populateTable();
 
-    // Handle search input
+
     $("#searchField").on("input", function () {
         let searchValue = $(this).val().toLowerCase();
         $("#vehicle-table tbody tr").each(function () {
@@ -180,30 +163,12 @@ $(document).ready(function () {
         });
     });
 
-    // $("#VehicleSearchClearBtn").click(function () {
-    //     $("#searchField").val("");
-    //     showAllRows();
-    // });
 
     function showAllRows() {
         $('#vehicle-table tbody tr').show();
     }
 
-    //
-    // $('#sort-button').on('click', function () {
-    //     var selectedOption = $("#sort-select").val(); // Get the selected sorting option
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: BASE_URL + 'vehicles/sort/' + selectedOption, // Adjust the URL as needed
-    //         success: function (data) {
-    //             updateTable(data); // Call a function to update the table
-    //         },
-    //         error: function (error) {
-    //             alert('Error: ' + error.message);
-    //         },
-    //     });
-    // });
-    //
+
     // // Function to update the table with sorted data
     function updateTable(sortedData) {
         var tbody = $('#vehicle-table tbody');
@@ -226,7 +191,7 @@ $(document).ready(function () {
                         <td>${vehicle.transmissionType}</td>
                         <td>${vehicle.distanceDriven}</td>
                         <td>${vehicle.qty}</td>
-                        <td>${vehicle.lossDamageVawier}</td> <!-- Include this field -->
+                        <td>${vehicle.lossDamageVawier}</td> 
                     </tr>
                 `;
             tbody.append(row);
@@ -238,7 +203,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'GET',
             url: BASE_URL + 'vehicle/sort',
-            data: {sortOption: selectedOption.toUpperCase()}, // Ensure it's in uppercase
+            data: {sortOption: selectedOption.toUpperCase()},
             success: function (data) {
                 updateTable(data);
                 setTimeout(populateTable, 2000);

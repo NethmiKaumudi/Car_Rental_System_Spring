@@ -7,7 +7,8 @@ document.querySelectorAll('.carsContainer .vehicles').forEach(vehicles => {
         let name = vehicles.getAttribute('data-name');
         detailsBox.forEach(details => {
             let target = details.getAttribute('data-target');
-            console.log(`name: ${name}, target: ${target}`); // Add this line for debugging
+            // Add this line for debugging
+            console.log(`name: ${name}, target: ${target}`);
 
             if (name == target) {
                 details.classList.add('active');

@@ -20,23 +20,14 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private Environment environment;
 
-    //    public void sendPasswordResetEmail(String to, String token) throws UnsupportedEncodingException {
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        message.setFrom("your-email@example.com");
-//        message.setTo(to);
-//        message.setSubject("Password Reset");
-//        String resetLink = environment.getProperty("BASE_URL") + "/reset-password?token=" + URLEncoder.encode(token, "UTF-8");
-//        message.setText("To reset your password, click the following link: " + resetLink);
-//        javaMailSender.send(message);
-//    }
     public void sendPasswordResetEmail(String to, String token) throws UnsupportedEncodingException {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("your-email@example.com");
         message.setTo(to);
         message.setSubject("Password Reset");
 
-        // Specify the base URL here
-        String baseUrl = "http://example.com"; // Replace with your desired base URL
+        // Specify the base URL
+        String baseUrl = "http://example.com";
 
         String resetLink = baseUrl + "/reset-password?token=" + URLEncoder.encode(token, "UTF-8");
         message.setText("To reset your password, click the following link: " + resetLink);

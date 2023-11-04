@@ -24,11 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(UserDTO dto) {
-//        if (userRepo.existsById(dto.getUserId())) {
-//            throw new RuntimeException(dto.getUserId() + "is already available, please insert a new ID");
-//        }
-//        User map = mapper.map(dto, User.class);
-//        userRepo.save(map);
+
         if (userRepo.existsById(dto.getUserId())) {
             throw new RuntimeException(dto.getUserId() + " is already available, please insert a new ID");
         }
@@ -40,25 +36,6 @@ public class UserServiceImpl implements UserService {
         userRepo.save(user);
     }
 
-    //    @Override
-//    public UserDTO login(UserDTO userDTO) {
-//        User user = userRepo.findByUserName(userDTO.getUserName());
-//        if (user != null && passwordEncoder.matches(userDTO.getPassword(), user.getPassword())) {
-//            return mapper.map(user, UserDTO.class);
-//        }
-//        return null;
-//    }
-//    public UserDTO login(UserDTO userDTO) {
-//        String userName = userDTO.getUserName().trim(); // Debug log
-//        User user = userRepo.findByUserName(userName); // Debug log
-//        if (user != null && passwordEncoder.matches(userDTO.getPassword(), user.getPassword())) {
-//            return mapper.map(user, UserDTO.class);
-//        }
-//        return null;
-//    }
-//    public User findUserByUserName(String userName) {
-//        return userRepo.findByUserName(userName);
-//    }
     public String findPasswordByUsername(String userName) {
         return userRepo.findPasswordByUserName(userName);
     }
@@ -75,32 +52,12 @@ public class UserServiceImpl implements UserService {
         User user = userRepo.findByEmail(email);
 
         if (user != null) {
-            // Set the new password and save the user to update the password
-            user.setPassword(passwordEncoder.encode(newPassword)); // Assuming you're using a password encoder
+            user.setPassword(passwordEncoder.encode(newPassword));
             userRepo.save(user);
-            return true; // Password update was successful
+            return true;
         }
-        return false; // User not found or password update failed
+        return false;
     }
-//    public boolean resetPassword(PasswordResetForm form) {
-//        String email = form.getEmail();
-//        String token = form.getToken();
-//        String newPassword = form.getNewPassword();
-//
-//        User user = userRepo.findByEmail(email);
-//
-//        if (user != null) {
-//            PassWordResetToken resetToken = user.getResetToken();
-//
-//            if (resetToken != null && resetToken.getToken().equals(token) && !resetToken.isTokenExpired()) {
-//                // Update the user's password with the new one (newPassword)
-//                user.setPassword(newPassword);
-//                userRepo.save(user);
-//                return true; // Password reset successful
-//            }
-//        }
-//
-//        return false; // Password reset failed
-//    }
+
 
 }
