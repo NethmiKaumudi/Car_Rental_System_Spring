@@ -238,9 +238,13 @@
 
 .input-box input:focus ~ label,
 .input-box input:valid ~ label {
-    top: -5px;
-
+    top: -6px;
+    background: transparent;
 }
+
+/*.input-box input::placeholder {*/
+/*    background-color: transparent; */
+/*}*/
 
 .input-box .icon {
     position: absolute;
